@@ -45,6 +45,16 @@ $ apt install SuperMario
 - [Sobre Spring MVC](https://blog.algaworks.com/spring-mvc/)
 - [Sobre RESTful Web Service](https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/en/ArchitectureInDetail/WebServiceDetail/REST.html)
 
+# Passo a Passo
+## Checklist para criar entidades:
+- Atributos básicos
+- Associações (inicie as coleções)
+- Construtores (não inclua coleções no construtor com parâmetros)
+- Getters e setters
+- hashCode e equals (implementação padrão: somente id)
+- Serializable (padrão: 1L)
+
+
 
    [PlDb]: <https://github.com/pedr>
    [PlGh]: <https://github.com/Jhonegao>
