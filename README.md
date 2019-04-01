@@ -10,6 +10,10 @@ Repositório criado para treinamento da equipe de desenvolvimento do projeto Fis
   - Projeto orientado a UML (Unified Modeling Language)
   - etc
 
+## Arquitetura Spring MVC relacionada a organização do projeto
+
+<img src="/imgs/modeloRestSpring.png" alt="Modelo Rest Spring MVC" width = 80% />
+
 ## Atribuições da Equipe
 Lista de responsabilidades de cada colaborador.
 
