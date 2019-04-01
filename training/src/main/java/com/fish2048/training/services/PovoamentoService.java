@@ -11,7 +11,8 @@ import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.repositories.PovoamentoRepository;
 
 /**
- * @author Alan Felipe Miranda Classe responsável por implementar os métodos de
+ * @author Alan Felipe Miranda 
+ * Classe responsável por implementar os métodos de
  *         CRUD().
  */
 @Service

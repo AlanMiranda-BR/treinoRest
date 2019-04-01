@@ -23,7 +23,7 @@ import com.fish2048.training.services.PovoamentoService;
  *         HTTP do cliente e retornar as respostas.
  */
 @RestController
-@RequestMapping(value = "/povoamento")
+@RequestMapping(value = "/povoamentos")
 public class PovoamentoResource {
 
 	@Autowired
