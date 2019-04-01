@@ -20,7 +20,7 @@ Lista de responsabilidades de cada colaborador.
 
 | Colaborador | Atribuição |
 | ------------| ---------- |
-| J. Valverde | Líder da agência secreta de espionagem, codenome Nick Fury |
+| J. Valverde | Coordenador do Projeto |
 | [Vitória][PlGa] | Espécie_Peixe, Lote_Peixe |
 | [Rafael][PlGa] | Custo_Ração, Ração, Alimentação |
 | [Jhon][PlGh] | Propriedade, Pscicultor, Viveiro, Tipo de Viveiro |
