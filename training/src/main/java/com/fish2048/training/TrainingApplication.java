@@ -38,6 +38,7 @@ public class TrainingApplication implements CommandLineRunner {
 		Povoamento pov2 = new Povoamento(null, 20000, sdf.parse("22/10/2018 04:50"));
 		Povoamento pov3 = new Povoamento(null, 9000, sdf.parse("20/01/2019 16:00"));
 
+		
 		povoamentoRepository.saveAll(Arrays.asList(pov1, pov2, pov3));
 	}
 
