@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //oi
+//oi
 @Entity
 public class EspeciePeixe implements Serializable {
 

@@ -1,5 +1,6 @@
 package com.fish2048.training.resources;
 //reup
+//oi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
