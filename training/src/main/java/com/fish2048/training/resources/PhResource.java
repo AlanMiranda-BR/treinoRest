@@ -24,7 +24,7 @@ import com.fish2048.training.services.PhService;
  *         HTTP do cliente e retornar as respostas.
  */
 @RestController
-@RequestMapping(value = "/ph")
+@RequestMapping(value = "/phs")
 
 public class PhResource {
 	

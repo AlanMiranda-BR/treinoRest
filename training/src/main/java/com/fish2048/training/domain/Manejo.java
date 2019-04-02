@@ -34,6 +34,7 @@ public class Manejo implements Serializable {
 		this.id = id;
 		this.tipoManejo = tipoManejo;
 		this.observacoes = observacoes;
+		this.dataHoraManejo = dataHoraManejo;
 	}
 	
 	//getters and setters

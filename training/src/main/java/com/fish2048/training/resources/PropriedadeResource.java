@@ -20,6 +20,12 @@ public class PropriedadeResource {
 
 	@Autowired
 	private PropriedadeService propriedadeService;
+	
+	@GetMapping
+	public ResponseEntity<Propriedade> findAll(){
+		return ResponseEntity.ok().body(propriedadeService);
+	}
+	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Propriedade> find(@PathVariable Integer id){		//PathVariable faz o caminho para uri da requisição no caso o /id
 		Propriedade obj = propriedadeService.find(id);
@@ -41,5 +47,4 @@ public class PropriedadeResource {
 		propriedadeService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
 }
