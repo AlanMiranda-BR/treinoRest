@@ -3,6 +3,7 @@ package com.fish2048.training.services;
 import java.util.Optional; //para o optional 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.fish2048.training.domain.Propriedade;
@@ -25,6 +26,29 @@ public class PropriedadeService {
 		obj.setId(null);//garantir que o obj esta com o ID null	para não sobrescrever
 		return propriedadeRepository.save(obj);
 	}
+//CRIANDO o UPDATE
+	public Propriedade update(Propriedade obj) {
+		Propriedade newObj = find(obj.getId());
+		newObj.setBairroPropriedade(obj.getBairroPropriedade());
+		newObj.setCepPropriedade(obj.getCepPropriedade());
+		newObj.setCidadePropriedade(obj.getCidadePropriedade());
+		newObj.setEnderecoPropriedade(obj.getEnderecoPropriedade());
+		newObj.setNomePropriedade(obj.getNomePropriedade());
+		newObj.setNumeroPropriedade(obj.getNumeroPropriedade());
+		newObj.setQtsViveirosProjeto(obj.getQtsViveirosProjeto());
+		newObj.setQtsViveirosTotal(obj.getQtsViveirosTotal());
+		newObj.setTelefonePropriedade(obj.getTelefonePropriedade());
+		return propriedadeRepository.save(newObj);		
+	}
+//DELETE
+	public void delete(Integer id) {
+		find(id);
+		try {
+			propriedadeRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
+		}
 //Criar o restante
+		}
 }
 
