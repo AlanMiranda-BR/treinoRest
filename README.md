@@ -92,6 +92,9 @@ Lista de responsabilidades de cada colaborador.
 - Instanciar service com a anotação @Autowired
 - Criar os requests (GET, POST, PUT, DELETE ...)
 
+# Modelo para Base da criação de claases
+<img src="/imgs/Diagrama de classes com cardinalidade EPAGRI.pdf" alt="LINK PARA O PDF" width = 80% />
+
 ## Links Uteis
 - [Sobre Spring MVC](https://blog.algaworks.com/spring-mvc/)
 - [Sobre RESTful Web Service](https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/en/ArchitectureInDetail/WebServiceDetail/REST.html)
