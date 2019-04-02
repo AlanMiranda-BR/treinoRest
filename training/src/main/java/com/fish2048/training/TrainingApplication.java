@@ -10,10 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fish2048.training.domain.Biometria;
 import com.fish2048.training.domain.Cultivo;
+import com.fish2048.training.domain.Ph;
 import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.domain.Propriedade;
 import com.fish2048.training.repositories.BiometriaRepository;
 import com.fish2048.training.repositories.CultivoRepository;
+import com.fish2048.training.repositories.PhRepository;
 import com.fish2048.training.repositories.PovoamentoRepository;
 import com.fish2048.training.repositories.PropriedadeRepository;
 
@@ -25,6 +27,7 @@ import com.fish2048.training.repositories.PropriedadeRepository;
  * para testes para criar registros no Banco de dados e deve ser
  * removido na versão "final".
  */
+
 @SpringBootApplication
 public class TrainingApplication implements CommandLineRunner {
 
@@ -37,6 +40,8 @@ public class TrainingApplication implements CommandLineRunner {
 	private CultivoRepository cultivoRepository;
 	@Autowired
 	private BiometriaRepository biometriaRepository;
+	@Autowired
+	private PhRepository phRepository;
 	
 	// Apenas este método deve permancer na versão final
 	public static void main(String[] args) {
@@ -74,7 +79,12 @@ public class TrainingApplication implements CommandLineRunner {
 		biometriaRepository.saveAll(Arrays.asList(bio1, bio2, bio3));
 		
 		//INSERT DESPESCAS
-
+		
+		//INSERT PH
+		Ph ph1 = new Ph(null, "Ácido");
+		Ph ph2 = new Ph(null, "Basico");
+		Ph ph3 = new Ph(null, "Ácido");
+		phRepository.saveAll(Arrays.asList(ph1, ph2, ph3));
 	}
 
 }

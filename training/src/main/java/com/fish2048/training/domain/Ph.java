@@ -20,9 +20,10 @@ public class Ph implements Serializable {
 	public Ph() {
 		
 	}
-
+	
 	//Construtor
-	public Ph(String afericaoPh) {
+	public Ph(Integer id, String afericaoPh) {
+		this.id = id;
 		this.afericaoPh = afericaoPh;
 	}
 	
