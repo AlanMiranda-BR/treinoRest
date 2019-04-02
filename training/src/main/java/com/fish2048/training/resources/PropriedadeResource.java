@@ -38,7 +38,7 @@ public class PropriedadeResource {
 		obj = propriedadeService.insert(obj);								//ele espera um objeto como argumento nesse caso o obj
 		return ResponseEntity.noContent().build();
 	}
-	@PutMapping
+	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> update(@RequestBody Propriedade obj, @PathVariable Integer id) {
 		obj.setId(id);
 		obj = propriedadeService.update(obj);

@@ -53,7 +53,7 @@ public class Propriedade implements Serializable {
 		this.nomeProprietario = nomeProprietario;
 		this.observacoes = observacoes;
 	}
-//Aqui os Getters e Setters
+//Aqui os Getters e Setters , sem o serial version
 	public Integer getId() {
 		return id;
 	}
@@ -157,7 +157,7 @@ public class Propriedade implements Serializable {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-//Hash code and Equals 
+//Hash code and Equals  só o ID
 	@Override
 	public int hashCode() {
 		final int prime = 31;
