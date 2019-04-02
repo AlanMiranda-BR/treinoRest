@@ -8,7 +8,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.fish2048.training.domain.Biometria;
-import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.repositories.BiometriaRepository;
 
 @Service
