@@ -11,9 +11,10 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * @author Pedro L F
+ * @author pedro lz
  *
- *
+ *	Falta adicionar métodos CalcularPesoMedi()
+ *	e CalcularComprimentoMedio()
  */
 @Entity
 public class Biometria implements Serializable {
