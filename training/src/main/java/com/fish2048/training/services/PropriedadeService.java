@@ -7,22 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.domain.Propriedade;
 import com.fish2048.training.repositories.PropriedadeRepository;
 
 @Service
 public class PropriedadeService {
-//autowired para não haver necessidade de instanciar a classe
-	@Autowired
-	
-	// FIND ALL
-	public List<Proprieade> findAll() {
-		List<Propriedade> obj = PropriedadeRepository.findAll();
-		return obj;
-	}
-// primeiro (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
+//autowired para não haver necessidade de instanciar a classe primeiro (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
+	@Autowired	
 	private PropriedadeRepository propriedadeRepository;
+// FIND ALL
+	public List<Propriedade> findAll() {
+		return propriedadeRepository.findAll();
+	}
 
 //criando metodos de pesquisa, instanciando um objeto e retornando o mesmo.
 	public Propriedade find(Integer id) {
