@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.fish2048.training.domain.Biometria;
 import com.fish2048.training.domain.Cultivo;
 import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.domain.Propriedade;
+import com.fish2048.training.repositories.BiometriaRepository;
 import com.fish2048.training.repositories.CultivoRepository;
 import com.fish2048.training.repositories.PovoamentoRepository;
 import com.fish2048.training.repositories.PropriedadeRepository;
@@ -33,7 +35,9 @@ public class TrainingApplication implements CommandLineRunner {
 	private PropriedadeRepository propriedadeRepository;
 	@Autowired
 	private CultivoRepository cultivoRepository;
-
+	@Autowired
+	private BiometriaRepository biometriaRepository;
+	
 	// Apenas este método deve permancer na versão final
 	public static void main(String[] args) {
 		SpringApplication.run(TrainingApplication.class, args);
@@ -64,6 +68,10 @@ public class TrainingApplication implements CommandLineRunner {
 		//INSERT ESPECIES
 		
 		//INSERT BIOMETRIA
+		Biometria bio1 = new Biometria(null, sdf.parse("20/03/1932 14:23"), 30.1,  2.0, "Alguma observacao");
+		Biometria bio2 = new Biometria(null, sdf.parse("22/10/1232 04:33"), 0.1,  1.0, "Alguma observacao2");
+		Biometria bio3 = new Biometria(null, sdf.parse("01/11/2932 22:13"), 3.1,  1.20, "Alguma observacao3");
+		biometriaRepository.saveAll(Arrays.asList(bio1, bio2, bio3));
 		
 		//INSERT DESPESCAS
 

@@ -27,14 +27,14 @@ public class Biometria implements Serializable {
 	// Fusão dos atributos dataBiometria e horaBiometria
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataHoraBiometria;
-	private Float pesoMedio;
-	private Float comprimentoMedio;
+	private Double pesoMedio;
+	private Double comprimentoMedio;
 	private String observacoes;
 	
 	// Construtores e get e setters
 	public Biometria() {}
 
-	public Biometria(Integer id, Date dataHoraBiometria, Float pesoMedio, float comprimentoMedio, String observacoes) {
+	public Biometria(Integer id, Date dataHoraBiometria, Double pesoMedio, Double comprimentoMedio, String observacoes) {
 		this.id = id;
 		this.dataHoraBiometria = dataHoraBiometria;
 		this.pesoMedio = pesoMedio;
@@ -58,19 +58,19 @@ public class Biometria implements Serializable {
 		this.dataHoraBiometria = dataHoraBiometria;
 	}
 
-	public Float getPesoMedio() {
+	public Double getPesoMedio() {
 		return pesoMedio;
 	}
 
-	public void setPesoMedio(Float pesoMedio) {
+	public void setPesoMedio(Double pesoMedio) {
 		this.pesoMedio = pesoMedio;
 	}
 
-	public float getComprimentoMedio() {
+	public Double getComprimentoMedio() {
 		return comprimentoMedio;
 	}
 
-	public void setComprimentoMedio(float comprimentoMedio) {
+	public void setComprimentoMedio(Double comprimentoMedio) {
 		this.comprimentoMedio = comprimentoMedio;
 	}
 
