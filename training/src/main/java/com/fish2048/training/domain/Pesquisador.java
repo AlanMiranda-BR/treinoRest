@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Pesquisador implements Serializable{
+public class Pesquisador implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -23,10 +23,11 @@ public class Pesquisador implements Serializable{
 	private String emailPesquisador; 
 	private String centroTrabalho;
 	
+	//Métodos
 	//Construtor Vazio
 	public Pesquisador() {}
 	
-	
+	//Construtor
 	public Pesquisador(Integer id, String nomePesquisador, Integer matriculaPesquisador, String especialidade,
 			Integer telefone, String emailPesquisador, String centroTrabalho) {
 		super();
