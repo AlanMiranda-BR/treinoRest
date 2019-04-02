@@ -1,5 +1,6 @@
 package com.fish2048.training.services;
 
+import java.util.List;
 import java.util.Optional; //para o optional 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,13 @@ import com.fish2048.training.repositories.PropriedadeRepository;
 
 @Service
 public class PropriedadeService {
-//autowired para não haver necessidade de instanciar a classe
-	@Autowired
-// primeiro (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
+//autowired para não haver necessidade de instanciar a classe primeiro (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
+	@Autowired	
 	private PropriedadeRepository propriedadeRepository;
+// FIND ALL
+	public List<Propriedade> findAll() {
+		return propriedadeRepository.findAll();
+	}
 
 //criando metodos de pesquisa, instanciando um objeto e retornando o mesmo.
 	public Propriedade find(Integer id) {
@@ -48,7 +52,7 @@ public class PropriedadeService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
 		}
-//Criar o restante
-		}
+	}
+	//Criar o restante
 }
 

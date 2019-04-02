@@ -1,5 +1,7 @@
 package com.fish2048.training.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,8 +24,8 @@ public class PropriedadeResource {
 	private PropriedadeService propriedadeService;
 	
 	@GetMapping
-	public ResponseEntity<Propriedade> findAll(){
-		return ResponseEntity.ok().body(propriedadeService);
+	public ResponseEntity <List<Propriedade>> findAll(){
+		return ResponseEntity.ok().body(propriedadeService.findAll());
 	}
 	
 	@GetMapping(value = "/{id}")
