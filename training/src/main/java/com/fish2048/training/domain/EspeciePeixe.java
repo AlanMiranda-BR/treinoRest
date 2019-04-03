@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//oi
-//oi
+
+/**
+ * @author Vitória Ramos
+ *
+ */
 @Entity
 public class EspeciePeixe implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	// Atributos
@@ -20,12 +22,10 @@ public class EspeciePeixe implements Serializable {
 	private String nomeCientifico;
 	private String nomePopular;
 
-	// Construtor Vazio
+	// Construtores
 	public EspeciePeixe() {
-
 	}
 
-	// construtor
 	public EspeciePeixe(Integer id, String nomeCientifico, String nomePopular) {
 		super();
 		this.id = id;
@@ -33,6 +33,7 @@ public class EspeciePeixe implements Serializable {
 		this.nomePopular = nomePopular;
 	}
 
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -57,6 +58,7 @@ public class EspeciePeixe implements Serializable {
 		this.nomePopular = nomePopular;
 	}
 
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;

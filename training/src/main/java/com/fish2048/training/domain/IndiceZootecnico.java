@@ -10,20 +10,19 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 /**
- * @author pedro
- *	
- *	Foi feito só os métodos CRUDS
+ * @author Pedro Lz
+ * @Todo Foi feito só os métodos CRUDS
  */
 @Entity
 public class IndiceZootecnico implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	//	Fusão entre dataIndiceZootecnico e horaIndiceZootecnico
+	// Fusão entre dataIndiceZootecnico e horaIndiceZootecnico
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataHoraIndiceZootecnico;
 	private Float ganhoPesoTotal;
@@ -33,9 +32,11 @@ public class IndiceZootecnico implements Serializable {
 	private Float crescimentoEspecifico;
 	private Float conversaoAlimentar;
 	private String observacoes;
-	
-	public IndiceZootecnico() {}
-	
+
+	// Construtores
+	public IndiceZootecnico() {
+	}
+
 	public IndiceZootecnico(Integer id, Date dataHoraIndiceZootecnico, Float ganhoPesoTotal, Float ganhoPesoDiario,
 			Float ganhoBiomassa, Float taxaDeSobrevivencia, Float crescimentoEspecifico, Float conversaoAlimentar,
 			String observacoes) {
@@ -51,6 +52,7 @@ public class IndiceZootecnico implements Serializable {
 		this.observacoes = observacoes;
 	}
 
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -123,6 +125,7 @@ public class IndiceZootecnico implements Serializable {
 		this.observacoes = observacoes;
 	}
 
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -147,7 +150,5 @@ public class IndiceZootecnico implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

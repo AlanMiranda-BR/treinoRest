@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Autorias;
 
+/**
+ * @author Wellinton Camboim
+ *
+ */
 @Repository
-public interface AutoriasRepository extends JpaRepository<Autorias, Integer>{
-
-}
+public interface AutoriasRepository extends JpaRepository<Autorias, Integer>{}

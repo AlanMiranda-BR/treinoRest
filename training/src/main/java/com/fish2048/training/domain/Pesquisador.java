@@ -7,12 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Wellinton Camboim
+ *
+ */
 @Entity
 public class Pesquisador implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
 
-	//Atributos
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -20,14 +23,13 @@ public class Pesquisador implements Serializable {
 	private Integer matriculaPesquisador;
 	private String especialidade;
 	private Integer telefone;
-	private String emailPesquisador; 
+	private String emailPesquisador;
 	private String centroTrabalho;
-	
-	//Métodos
-	//Construtor Vazio
-	public Pesquisador() {}
-	
-	//Construtor
+
+	// Construtores
+	public Pesquisador() {
+	}
+
 	public Pesquisador(Integer id, String nomePesquisador, Integer matriculaPesquisador, String especialidade,
 			Integer telefone, String emailPesquisador, String centroTrabalho) {
 		super();
@@ -40,77 +42,64 @@ public class Pesquisador implements Serializable {
 		this.centroTrabalho = centroTrabalho;
 	}
 
-	//Métodos
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
 	public String getNomePesquisador() {
 		return nomePesquisador;
 	}
-
 
 	public void setNomePesquisador(String nomePesquisador) {
 		this.nomePesquisador = nomePesquisador;
 	}
 
-
 	public Integer getMatriculaPesquisador() {
 		return matriculaPesquisador;
 	}
-
 
 	public void setMatriculaPesquisador(Integer matriculaPesquisador) {
 		this.matriculaPesquisador = matriculaPesquisador;
 	}
 
-
 	public String getEspecialidade() {
 		return especialidade;
 	}
-
 
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
 	}
 
-
 	public Integer getTelefone() {
 		return telefone;
 	}
-
 
 	public void setTelefone(Integer telefone) {
 		this.telefone = telefone;
 	}
 
-
 	public String getEmailPesquisador() {
 		return emailPesquisador;
 	}
-
 
 	public void setEmailPesquisador(String emailPesquisador) {
 		this.emailPesquisador = emailPesquisador;
 	}
 
-
 	public String getCentroTrabalho() {
 		return centroTrabalho;
 	}
-
 
 	public void setCentroTrabalho(String centroTrabalho) {
 		this.centroTrabalho = centroTrabalho;
 	}
 
-
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,7 +107,6 @@ public class Pesquisador implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -136,7 +124,4 @@ public class Pesquisador implements Serializable {
 			return false;
 		return true;
 	}
-	
-
-	
 }

@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.fish2048.training.domain.CustoRacao;
 
+/**
+ * @author Rafael Silva Neukirchen
+ *
+ */
 @Repository
-public interface CustoRacaoRepository extends JpaRepository<CustoRacao, Integer>{
-
-}
+public interface CustoRacaoRepository extends JpaRepository<CustoRacao, Integer> {}

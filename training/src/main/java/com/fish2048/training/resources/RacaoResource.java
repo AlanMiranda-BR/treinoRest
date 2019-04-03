@@ -14,22 +14,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import com.fish2048.training.services.RacaoService;
-import com.fish2048.training.domain.Racao;
 
+import com.fish2048.training.domain.Racao;
+import com.fish2048.training.services.RacaoService;
+
+/**
+ * @author Rafael Silva Neukirchen
+ *
+ */
 @RestController
 @RequestMapping(value = "/Racao")
 public class RacaoResource {
-	
+
 	@Autowired
 	private RacaoService racaoService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Racao>> findAll() {
 		List<Racao> obj = racaoService.findAll();
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Racao> find(@PathVariable Integer id) {
 		Racao obj = racaoService.find(id);

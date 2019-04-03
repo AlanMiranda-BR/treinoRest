@@ -1,7 +1,8 @@
 package com.fish2048.training.domain;
 
 /**
- * Criado por Rafael Silva Neukirchen
+ * @author Rafael Silva Neukirchen
+ * @Todo faltou o construtor principal, no mais tudo certo.
  */
 
 import java.io.Serializable;
@@ -14,29 +15,41 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Alimentacao implements Serializable{
+public class Alimentacao implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	//Data e Hora JUNTOS!
+	// Data e Hora JUNTOS!
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataHoraAlimentacao;
-	private Float pesoMedio;
-	private Float qtdOxigenioDissolvido;
-	private Float temperaturaH2O;
-	private Float qtdRacao;
+	private Double pesoMedio;
+	private Double qtdOxigenioDissolvido;
+	private Double temperaturaH2O;
+	private Double qtdRacao;
 	private Integer taxaAlimentacao;
 	private String observacoes;
-	
-	//Construtor
-	
+
+	// Construtores
 	public Alimentacao() {
 	}
-	
-	//Getters e Setters
 
+	public Alimentacao(Integer id, Date dataHoraAlimentacao, Double pesoMedio, Double qtdOxigenioDissolvido,
+			Double temperaturaH2O, Double qtdRacao, Integer taxaAlimentacao, String observacoes) {
+		super();
+		this.id = id;
+		this.dataHoraAlimentacao = dataHoraAlimentacao;
+		this.pesoMedio = pesoMedio;
+		this.qtdOxigenioDissolvido = qtdOxigenioDissolvido;
+		this.temperaturaH2O = temperaturaH2O;
+		this.qtdRacao = qtdRacao;
+		this.taxaAlimentacao = taxaAlimentacao;
+		this.observacoes = observacoes;
+	}
+
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -53,35 +66,35 @@ public class Alimentacao implements Serializable{
 		this.dataHoraAlimentacao = dataHoraAlimentacao;
 	}
 
-	public Float getPesoMedio() {
+	public Double getPesoMedio() {
 		return pesoMedio;
 	}
 
-	public void setPesoMedio(Float pesoMedio) {
+	public void setPesoMedio(Double pesoMedio) {
 		this.pesoMedio = pesoMedio;
 	}
 
-	public Float getQtdOxigenioDissolvido() {
+	public Double getQtdOxigenioDissolvido() {
 		return qtdOxigenioDissolvido;
 	}
 
-	public void setQtdOxigenioDissolvido(Float qtdOxigenioDissolvido) {
+	public void setQtdOxigenioDissolvido(Double qtdOxigenioDissolvido) {
 		this.qtdOxigenioDissolvido = qtdOxigenioDissolvido;
 	}
 
-	public Float getTemperaturaH2O() {
+	public Double getTemperaturaH2O() {
 		return temperaturaH2O;
 	}
 
-	public void setTemperaturaH2O(Float temperaturaH2O) {
+	public void setTemperaturaH2O(Double temperaturaH2O) {
 		this.temperaturaH2O = temperaturaH2O;
 	}
 
-	public Float getQtdRacao() {
+	public Double getQtdRacao() {
 		return qtdRacao;
 	}
 
-	public void setQtdRacao(Float qtdRacao) {
+	public void setQtdRacao(Double qtdRacao) {
 		this.qtdRacao = qtdRacao;
 	}
 
@@ -101,8 +114,7 @@ public class Alimentacao implements Serializable{
 		this.observacoes = observacoes;
 	}
 
-	//HashCode e Equals
-	
+	// HashCode e Equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -127,4 +139,5 @@ public class Alimentacao implements Serializable{
 			return false;
 		return true;
 	}
+
 }

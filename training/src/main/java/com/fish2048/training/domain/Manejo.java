@@ -10,25 +10,28 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * @author Gabriel Mauro
+ *
+ */
 @Entity
 public class Manejo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	//ATRIBUTOS 
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String tipoManejo;
-	private String observacoes; 
-	//Junção do data e hora dos atributos manejo
+	private String observacoes;
+	// Junção do data e hora dos atributos manejo
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataHoraManejo;
-	
-	//Construtor Vazio
+
+	// Construtores
 	public Manejo() {
 	}
 
-	//Contrututor 
 	public Manejo(Integer id, String tipoManejo, String observacoes, Date dataHoraManejo) {
 		super();
 		this.id = id;
@@ -36,8 +39,8 @@ public class Manejo implements Serializable {
 		this.observacoes = observacoes;
 		this.dataHoraManejo = dataHoraManejo;
 	}
-	
-	//getters and setters
+
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}
@@ -70,8 +73,7 @@ public class Manejo implements Serializable {
 		this.dataHoraManejo = dataHoraManejo;
 	}
 
-
-	//Compara objeto
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -96,6 +98,5 @@ public class Manejo implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

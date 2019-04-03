@@ -17,39 +17,40 @@ import com.fish2048.training.domain.CustoRacao;
 import com.fish2048.training.services.CustoRacaoService;
 
 /**
- * 
- * 
+ * @author Rafael Silva Neukirchen
+ *
  */
 @RestController
-@RequestMapping(value = "/custoracao")
+@RequestMapping(value = "/custoracoes")
 public class CustoRacaoResource {
 
 	@Autowired
 	private CustoRacaoService custoRacaoService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<CustoRacao>> findAll() {
-		List<CustoRacao> obj = custoRacaoService.findAll();
-		return ResponseEntity.ok().body(obj);	
+		List<CustoRacao> custoRacao = custoRacaoService.findAll();
+		return ResponseEntity.ok().body(custoRacao);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<CustoRacao> find(@PathVariable Integer id) {
-		CustoRacao obj = custoRacaoService.find(id);
-		return ResponseEntity.ok().body(obj);
+		CustoRacao custoRacao = custoRacaoService.find(id);
+		return ResponseEntity.ok().body(custoRacao);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody CustoRacao obj) {
-		obj = custoRacaoService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Void> insert(@RequestBody CustoRacao custoRacao) {
+		custoRacao = custoRacaoService.insert(custoRacao);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(custoRacao.getId())
+				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody CustoRacao obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = custoRacaoService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody CustoRacao custoRacao, @PathVariable Integer id) {
+		custoRacao.setId(id);
+		custoRacao = custoRacaoService.update(custoRacao);
 		return ResponseEntity.noContent().build();
 	}
 

@@ -10,27 +10,36 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Propriedade;
 import com.fish2048.training.repositories.PropriedadeRepository;
 
+/**
+ * @author Jhon
+ *
+ */
 @Service
 public class PropriedadeService {
-//autowired para não haver necessidade de instanciar a classe primeiro (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
-	@Autowired	
+	// autowired para não haver necessidade de instanciar a classe primeiro
+	// (PRopriedadeRepository é a classe) segundo é o Objeto(propriedadeRepository)
+	@Autowired
 	private PropriedadeRepository propriedadeRepository;
-// FIND ALL
+
+	// CREATES
+	public Propriedade insert(Propriedade obj) {
+		obj.setId(null);// garantir que o obj esta com o ID null para não sobrescrever
+		return propriedadeRepository.save(obj);
+	}
+
+	// READS
 	public List<Propriedade> findAll() {
 		return propriedadeRepository.findAll();
 	}
 
-//criando metodos de pesquisa, instanciando um objeto e retornando o mesmo.
+	// criando metodos de pesquisa, instanciando um objeto e retornando o mesmo.
 	public Propriedade find(Integer id) {
-		Optional<Propriedade> obj = propriedadeRepository.findById(id); //é preciso criar um objeto Optional, pois o mesmo pode ser nulo
+		Optional<Propriedade> obj = propriedadeRepository.findById(id); // é preciso criar um objeto Optional, pois o
+																		// mesmo pode ser nulo
 		return obj.orElse(null);
 	}
-//criando o insert
-	public Propriedade insert(Propriedade obj) {
-		obj.setId(null);//garantir que o obj esta com o ID null	para não sobrescrever
-		return propriedadeRepository.save(obj);
-	}
-//CRIANDO o UPDATE
+
+	// UPDATES
 	public Propriedade update(Propriedade obj) {
 		Propriedade newObj = find(obj.getId());
 		newObj.setBairroPropriedade(obj.getBairroPropriedade());
@@ -42,9 +51,10 @@ public class PropriedadeService {
 		newObj.setQtsViveirosProjeto(obj.getQtsViveirosProjeto());
 		newObj.setQtsViveirosTotal(obj.getQtsViveirosTotal());
 		newObj.setTelefonePropriedade(obj.getTelefonePropriedade());
-		return propriedadeRepository.save(newObj);		
+		return propriedadeRepository.save(newObj);
 	}
-//DELETE
+
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -53,6 +63,4 @@ public class PropriedadeService {
 			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
 		}
 	}
-	//Criar o restante
 }
-

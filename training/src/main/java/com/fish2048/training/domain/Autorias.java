@@ -7,32 +7,33 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Wellinton Camboim
+ * @todo codPesquisa e codFuncao são coleções(relacionamentos), por isso não vão
+ *       no construtor, de qualquer forma eu removi para não confundir na hora
+ *       de criar.
+ */
 @Entity
 public class Autorias implements Serializable {
-	
 	private static final long serialVersionUID = 1L;
-	
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer matriculaPesquisador;
-	private Integer codPesquisa;
-	private Integer codFuncao;
-	
-	//Métodos
-	//Construtor Vazio
-	public Autorias() {}
 
-	//Construtor
-	public Autorias(Integer id, Integer matriculaPesquisador, Integer codPesquisa, Integer codFuncao) {
+	// Construtores
+	public Autorias() {
+	}
+
+	public Autorias(Integer id, Integer matriculaPesquisador) {
 		super();
 		this.id = id;
 		this.matriculaPesquisador = matriculaPesquisador;
-		this.codPesquisa = codPesquisa;
-		this.codFuncao = codFuncao;
 	}
 
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -49,22 +50,7 @@ public class Autorias implements Serializable {
 		this.matriculaPesquisador = matriculaPesquisador;
 	}
 
-	public Integer getCodPesquisa() {
-		return codPesquisa;
-	}
-
-	public void setCodPesquisa(Integer codPesquisa) {
-		this.codPesquisa = codPesquisa;
-	}
-
-	public Integer getCodFuncao() {
-		return codFuncao;
-	}
-
-	public void setCodFuncao(Integer codFuncao) {
-		this.codFuncao = codFuncao;
-	}
-
+	// HashCode e Equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,5 +75,4 @@ public class Autorias implements Serializable {
 			return false;
 		return true;
 	}
-	
 }

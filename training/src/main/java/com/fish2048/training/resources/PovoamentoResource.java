@@ -31,27 +31,27 @@ public class PovoamentoResource {
 
 	@GetMapping
 	public ResponseEntity<List<Povoamento>> findAll() {
-		List<Povoamento> obj = povoamentoService.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<Povoamento> povoamento = povoamentoService.findAll();
+		return ResponseEntity.ok().body(povoamento);
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Povoamento> find(@PathVariable Integer id) {
-		Povoamento obj = povoamentoService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Povoamento povoamento = povoamentoService.find(id);
+		return ResponseEntity.ok().body(povoamento);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Povoamento obj) {
-		obj = povoamentoService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Void> insert(@RequestBody Povoamento povoamento) {
+		povoamento = povoamentoService.insert(povoamento);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(povoamento.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Povoamento obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = povoamentoService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Povoamento povoamento, @PathVariable Integer id) {
+		povoamento.setId(id);
+		povoamento = povoamentoService.update(povoamento);
 		return ResponseEntity.noContent().build();
 	}
 

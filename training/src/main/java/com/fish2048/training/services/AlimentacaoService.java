@@ -9,46 +9,47 @@ import com.fish2048.training.domain.Alimentacao;
 import com.fish2048.training.repositories.AlimentacaoRepository;
 
 /**
- * Criado por Rafael Silva Neukirchen
+ * @author Rafael Silva Neukirchen
+ * @Tudo OK, foi somente colocado na ordem e feito os comentários para ficar
+ *       padrão com os demais
  */
 @Service
 public class AlimentacaoService {
-	
+
 	@Autowired
 	private AlimentacaoRepository alimentacaoRepository;
 
-	// FIND ALL
+	// CREATES
+	public Alimentacao insert(Alimentacao alimentacao) {
+		alimentacao.setId(null);
+		return alimentacaoRepository.save(alimentacao);
+	}
+
+	// READS
 	public List<Alimentacao> findAll() {
-		List<Alimentacao> obj = alimentacaoRepository.findAll();
-		return obj;
+		List<Alimentacao> alimentacao = alimentacaoRepository.findAll();
+		return alimentacao;
 	}
-	
-	// INSERT
-	public Alimentacao insert(Alimentacao obj) {
-		obj.setId(null);
-		return alimentacaoRepository.save(obj);
-	}
-	
-	// FIND BY ID
+
 	public Alimentacao find(Integer id) {
-		Optional<Alimentacao> obj = alimentacaoRepository.findById(id);
-		return obj.orElse(null);
-		}
-	
-	// UPDATE
-	public Alimentacao update(Alimentacao obj) {
-		Alimentacao newObj = find(obj.getId());
-		newObj.setDataHoraAlimentacao(obj.getDataHoraAlimentacao());
-		newObj.setObservacoes(obj.getObservacoes());
-		newObj.setPesoMedio(obj.getPesoMedio());
-		newObj.setQtdOxigenioDissolvido(obj.getPesoMedio());
-		newObj.setQtdRacao(obj.getQtdRacao());
-		newObj.setTaxaAlimentacao(obj.getTaxaAlimentacao());
-		newObj.setTemperaturaH2O(obj.getTemperaturaH2O());
-		return alimentacaoRepository.save(newObj);
+		Optional<Alimentacao> alimentacao = alimentacaoRepository.findById(id);
+		return alimentacao.orElse(null);
 	}
-	
-	// DELETE
+
+	// UPDATES
+	public Alimentacao update(Alimentacao alimentacao) {
+		Alimentacao newAlimentacao = find(alimentacao.getId());
+		newAlimentacao.setDataHoraAlimentacao(alimentacao.getDataHoraAlimentacao());
+		newAlimentacao.setObservacoes(alimentacao.getObservacoes());
+		newAlimentacao.setPesoMedio(alimentacao.getPesoMedio());
+		newAlimentacao.setQtdOxigenioDissolvido(alimentacao.getPesoMedio());
+		newAlimentacao.setQtdRacao(alimentacao.getQtdRacao());
+		newAlimentacao.setTaxaAlimentacao(alimentacao.getTaxaAlimentacao());
+		newAlimentacao.setTemperaturaH2O(alimentacao.getTemperaturaH2O());
+		return alimentacaoRepository.save(newAlimentacao);
+	}
+
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {

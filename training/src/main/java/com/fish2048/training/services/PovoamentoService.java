@@ -11,8 +11,7 @@ import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.repositories.PovoamentoRepository;
 
 /**
- * @author Alan Felipe Miranda 
- * Classe responsável por implementar os métodos de
+ * @author Alan Felipe Miranda Classe responsável por implementar os métodos de
  *         CRUD().
  */
 @Service
@@ -20,33 +19,32 @@ public class PovoamentoService {
 	@Autowired
 	private PovoamentoRepository povoamentoRepository;
 
-	// FIND ALL
+	// CREATES
+	public Povoamento insert(Povoamento povoamento) {
+		povoamento.setId(null);
+		return povoamentoRepository.save(povoamento);
+	}
+
+	// READS
 	public List<Povoamento> findAll() {
-		List<Povoamento> obj = povoamentoRepository.findAll();
-		return obj;
+		List<Povoamento> povoamento = povoamentoRepository.findAll();
+		return povoamento;
 	}
 
-	// FIND BY ID
 	public Povoamento find(Integer id) {
-		Optional<Povoamento> obj = povoamentoRepository.findById(id);
-		return obj.orElse(null);
+		Optional<Povoamento> povoamento = povoamentoRepository.findById(id);
+		return povoamento.orElse(null);
 	}
 
-	// INSERT
-	public Povoamento insert(Povoamento obj) {
-		obj.setId(null);
-		return povoamentoRepository.save(obj);
+	// UPDATES
+	public Povoamento update(Povoamento povoamento) {
+		Povoamento newPovoamento = find(povoamento.getId());
+		newPovoamento.setDataPovoamento(povoamento.getDataPovoamento());
+		newPovoamento.setQtdPeixePovoamento(povoamento.getQtdPeixePovoamento());
+		return povoamentoRepository.save(newPovoamento);
 	}
 
-	// UPDATE
-	public Povoamento update(Povoamento obj) {
-		Povoamento newObj = find(obj.getId());
-		newObj.setDataPovoamento(obj.getDataPovoamento());
-		newObj.setQtdPeixePovoamento(obj.getQtdPeixePovoamento());
-		return povoamentoRepository.save(newObj);
-	}
-
-	// DELETE
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {

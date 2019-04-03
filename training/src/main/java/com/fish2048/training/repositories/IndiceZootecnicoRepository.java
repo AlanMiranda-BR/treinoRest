@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.IndiceZootecnico;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @Repository	
-public interface IndiceZootecnicoRepository extends JpaRepository<IndiceZootecnico, Integer>{
-
-}
+public interface IndiceZootecnicoRepository extends JpaRepository<IndiceZootecnico, Integer>{}

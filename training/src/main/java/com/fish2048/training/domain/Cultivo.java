@@ -7,25 +7,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Entity
-public class Cultivo implements Serializable{
+public class Cultivo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
-	
-	//construtores
-	public Cultivo() {}
-	
+
+	// Construtores
+	public Cultivo() {
+	}
+
 	public Cultivo(Integer id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 	}
 
-	//getters e setters
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -42,8 +48,7 @@ public class Cultivo implements Serializable{
 		this.descricao = descricao;
 	}
 
-	
-	//hashCode e equals
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,6 +73,5 @@ public class Cultivo implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
 }

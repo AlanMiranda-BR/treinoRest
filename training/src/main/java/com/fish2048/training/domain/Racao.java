@@ -8,10 +8,15 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * @author Rafael Silva Neukirchen
+ *
+ */
 @Entity
-public class Racao implements Serializable{
+public class Racao implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -19,13 +24,20 @@ public class Racao implements Serializable{
 	private String tipoRacao;
 	private Integer qtdProteina;
 	private String observacoes;
-	
-	//Construtor
+
+	// Construtores
 	public Racao() {
 	}
-	
-	//Get e Setters
 
+	public Racao(Integer id, String tipoRacao, Integer qtdProteina, String observacoes) {
+		super();
+		this.id = id;
+		this.tipoRacao = tipoRacao;
+		this.qtdProteina = qtdProteina;
+		this.observacoes = observacoes;
+	}
+
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -58,8 +70,7 @@ public class Racao implements Serializable{
 		this.observacoes = observacoes;
 	}
 
-	//HashCode e Equals
-	
+	// HashCode e Equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,5 +94,5 @@ public class Racao implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 }

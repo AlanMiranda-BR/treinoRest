@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fish2048.training.domain.Biometria;
-import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.services.BiometriaService;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @RestController
 @RequestMapping(value = "/biometrias")
 public class BiometriaResource {
@@ -26,27 +29,27 @@ public class BiometriaResource {
 
 	@GetMapping
 	public ResponseEntity<List<Biometria>> findAll() {
-		List<Biometria> obj = biometriaService.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<Biometria> biometria = biometriaService.findAll();
+		return ResponseEntity.ok().body(biometria);
 	}
 	
 	// /biometrias/1
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Biometria> find(@PathVariable Integer id) {
-		Biometria obj = biometriaService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Biometria biometria = biometriaService.find(id);
+		return ResponseEntity.ok().body(biometria);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Biometria obj) {
-		obj = biometriaService.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody Biometria biometria) {
+		biometria = biometriaService.insert(biometria);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Biometria obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = biometriaService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Biometria biometria, @PathVariable Integer id) {
+		biometria.setId(id);
+		biometria = biometriaService.update(biometria);
 		return ResponseEntity.noContent().build();
 	}
 	

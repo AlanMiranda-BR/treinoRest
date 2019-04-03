@@ -10,46 +10,49 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Parametro;
 import com.fish2048.training.repositories.ParametroRepository;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @Service
 public class ParametroService {
 
 	@Autowired
 	private ParametroRepository parametroRepository;
-	
-	// FIND ALL
+
+	// CREATES
+	public Parametro insert(Parametro parametro) {
+		parametro.setId(null);
+		return parametroRepository.save(parametro);
+	}
+
+	// READS
 	public List<Parametro> findAll() {
-		List<Parametro> obj = parametroRepository.findAll();
-		return obj;
+		List<Parametro> parametro = parametroRepository.findAll();
+		return parametro;
 	}
-	
-	// Find by Id
+
 	public Parametro find(Integer id) {
-		Optional<Parametro> obj = parametroRepository.findById(id);
-		return obj.orElse(null);
+		Optional<Parametro> parametro = parametroRepository.findById(id);
+		return parametro.orElse(null);
 	}
-	
-	// INSERT
-	public Parametro insert(Parametro obj) {
-		obj.setId(null);
-		return parametroRepository.save(obj);
+
+	// UPDATES
+	public Parametro update(Parametro parametro) {
+		Parametro newParametro = find(parametro.getId());
+		newParametro.setAlcalinidade(parametro.getAlcalinidade());
+		newParametro.setCondutividade(parametro.getCondutividade());
+		newParametro.setDataHoraParametro(parametro.getDataHoraParametro());
+		newParametro.setDureza(parametro.getDureza());
+		newParametro.setObservacoes(parametro.getObservacoes());
+		newParametro.setQtdOxigenioDissolvido(parametro.getQtdOxigenioDissolvido());
+		newParametro.setSanilidade(parametro.getSanilidade());
+		newParametro.setSaturacao(parametro.getSaturacao());
+		newParametro.setTemperaturaH20(parametro.getTemperaturaH20());
+		return parametroRepository.save(newParametro);
 	}
-	
-	// UPDATE
-	public Parametro update(Parametro obj) {
-		Parametro newObj = find(obj.getId());
-		newObj.setAlcalinidade(obj.getAlcalinidade());
-		newObj.setCondutividade(obj.getCondutividade());
-		newObj.setDataHoraParametro(obj.getDataHoraParametro());
-		newObj.setDureza(obj.getDureza());
-		newObj.setObservacoes(obj.getObservacoes());
-		newObj.setQtdOxigenioDissolvido(obj.getQtdOxigenioDissolvido());
-		newObj.setSanilidade(obj.getSanilidade());
-		newObj.setSaturacao(obj.getSaturacao());
-		newObj.setTemperaturaH20(obj.getTemperaturaH20());
-		return parametroRepository.save(newObj);
-	}
-	
-	// DELETE
+
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {

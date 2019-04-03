@@ -17,39 +17,40 @@ import com.fish2048.training.domain.Alimentacao;
 import com.fish2048.training.services.AlimentacaoService;
 
 /**
- * Criado por Rafael Silva Neukirchen
+ * @author Rafael Silva Neukirchen
+ * @tudo tracado de "/Alimentacao" para "/alimentacoes"
  */
 
 @RestController
-@RequestMapping(value = "/Alimentacao")
+@RequestMapping(value = "/alimentacoes")
 public class AlimentacaoResource {
 
 	@Autowired
 	private AlimentacaoService alimentacaoService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Alimentacao>> findAll() {
-		List<Alimentacao> obj = alimentacaoService.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<Alimentacao> alimentacao = alimentacaoService.findAll();
+		return ResponseEntity.ok().body(alimentacao);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Alimentacao> find(@PathVariable Integer id) {
-		Alimentacao obj = alimentacaoService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Alimentacao alimentacao = alimentacaoService.find(id);
+		return ResponseEntity.ok().body(alimentacao);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Alimentacao obj) {
-		obj = alimentacaoService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Void> insert(@RequestBody Alimentacao alimentacao) {
+		alimentacao = alimentacaoService.insert(alimentacao);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(alimentacao.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Alimentacao obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = alimentacaoService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Alimentacao alimentacao, @PathVariable Integer id) {
+		alimentacao.setId(id);
+		alimentacao = alimentacaoService.update(alimentacao);
 		return ResponseEntity.noContent().build();
 	}
 
@@ -58,5 +59,4 @@ public class AlimentacaoResource {
 		alimentacaoService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-		
 }

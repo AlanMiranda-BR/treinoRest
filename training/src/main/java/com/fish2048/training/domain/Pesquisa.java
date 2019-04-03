@@ -10,12 +10,15 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * @author Wellinton Camboim
+ *
+ */
 @Entity
 public class Pesquisa implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-	
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -23,35 +26,44 @@ public class Pesquisa implements Serializable {
 	private Date dataInicio;
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataFim;
-	
-	//Métodos
-	//Construtor Vazio
-	public Pesquisa() {}
-	//Construtor
+
+	// Construtores
+	public Pesquisa() {
+	}
+
 	public Pesquisa(Integer id, Date dataInicio, Date dataFim) {
 		super();
 		this.id = id;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 	}
+
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public Date getDataInicio() {
 		return dataInicio;
 	}
+
 	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
+
 	public Date getDataFim() {
 		return dataFim;
 	}
+
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
+
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +71,7 @@ public class Pesquisa implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -75,5 +88,5 @@ public class Pesquisa implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

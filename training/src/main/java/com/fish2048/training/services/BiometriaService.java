@@ -10,40 +10,43 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Biometria;
 import com.fish2048.training.repositories.BiometriaRepository;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @Service
 public class BiometriaService {
 
 	@Autowired
 	private BiometriaRepository biometriaRepository;
-	
-	// FIND ALL
+
+	// CREATE
+	public Biometria insert(Biometria biometria) {
+		biometria.setId(null);
+		return biometriaRepository.save(biometria);
+	}
+
+	// READS
 	public List<Biometria> findAll() {
-		List<Biometria> obj = biometriaRepository.findAll();
-		return obj;
+		List<Biometria> biometria = biometriaRepository.findAll();
+		return biometria;
 	}
-	
-	// Find by Id
+
 	public Biometria find(Integer id) {
-		Optional<Biometria> obj = biometriaRepository.findById(id);
-		return obj.orElse(null);
+		Optional<Biometria> biometria = biometriaRepository.findById(id);
+		return biometria.orElse(null);
 	}
-	
-	// INSERT
-	public Biometria insert(Biometria obj) {
-		obj.setId(null);
-		return biometriaRepository.save(obj);
-	}
-	
+
 	// UPDATE
-	public Biometria update(Biometria obj) {
-		Biometria newObj = find(obj.getId());
-		newObj.setComprimentoMedio(obj.getComprimentoMedio());
-		newObj.setDataHoraBiometria(obj.getDataHoraBiometria());
-		newObj.setObservacoes(obj.getObservacoes());
-		newObj.setPesoMedio(obj.getPesoMedio());
-		return biometriaRepository.save(newObj);
+	public Biometria update(Biometria biometria) {
+		Biometria newBiometria = find(biometria.getId());
+		newBiometria.setComprimentoMedio(biometria.getComprimentoMedio());
+		newBiometria.setDataHoraBiometria(biometria.getDataHoraBiometria());
+		newBiometria.setObservacoes(biometria.getObservacoes());
+		newBiometria.setPesoMedio(biometria.getPesoMedio());
+		return biometriaRepository.save(newBiometria);
 	}
-	
+
 	// DELETE
 	public void delete(Integer id) {
 		find(id);

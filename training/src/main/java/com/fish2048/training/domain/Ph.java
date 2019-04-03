@@ -7,27 +7,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Gabriel Mauro
+ *
+ */
 @Entity
 public class Ph implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//ATRIBUTOS
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String afericaoPh;
-	
-	//Construtor Vazio
+
+	// Construtores
 	public Ph() {
-		
 	}
-	
-	//Construtor
+
 	public Ph(Integer id, String afericaoPh) {
 		this.id = id;
 		this.afericaoPh = afericaoPh;
 	}
-	
-	//getters and setters
+
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}
@@ -44,8 +47,7 @@ public class Ph implements Serializable {
 		this.afericaoPh = afericaoPh;
 	}
 
-	
-	//Compara objeto
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -70,6 +72,5 @@ public class Ph implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }

@@ -8,31 +8,34 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Racao;
 import com.fish2048.training.repositories.RacaoRepository;
 
+/**
+ * @author Rafael Silva Neukirchen
+ *
+ */
 @Service
 public class RacaoService {
 
 	@Autowired
 	private RacaoRepository racaoRepository;
-	
-	// FIND ALL
-	public List<Racao> findAll() {
-		List<Racao> obj = racaoRepository.findAll();
-		return obj;		
-	}
-	
-	// FIND BY ID
-	public Racao find(Integer id) {
-		Optional<Racao> obj = racaoRepository.findById(id);
-		return obj.orElse(null);
-		}
-	
-	// INSERT
+
+	// CREATES
 	public Racao insert(Racao obj) {
 		obj.setId(null);
 		return racaoRepository.save(obj);
 	}
-	
-	// UPDATE
+
+	// READS
+	public List<Racao> findAll() {
+		List<Racao> obj = racaoRepository.findAll();
+		return obj;
+	}
+
+	public Racao find(Integer id) {
+		Optional<Racao> obj = racaoRepository.findById(id);
+		return obj.orElse(null);
+	}
+
+	// UPDATES
 	public Racao update(Racao obj) {
 		Racao newObj = find(obj.getId());
 		newObj.setTipoRacao(obj.getTipoRacao());
@@ -40,8 +43,8 @@ public class RacaoService {
 		newObj.setObservacoes(obj.getObservacoes());
 		return racaoRepository.save(newObj);
 	}
-	
-	// DELETE
+
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -50,5 +53,5 @@ public class RacaoService {
 			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
 		}
 	}
-	
+
 }

@@ -7,11 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * @author Jhon
+ *
+ */
 @Entity // PARA REPRESENTAR QUE ESTA CLASSE É UMA ENTIDADE
 public class Propriedade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// Atributos da classe
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -28,12 +32,10 @@ public class Propriedade implements Serializable {
 	private String nomeProprietario;
 	private String observacoes;
 
-// Construtor vazio
+	// Construtores
 	public Propriedade() {
-
 	}
 
-// construtor com todos atributos
 	public Propriedade(Integer id, Integer qtsViveirosProjeto, Integer qtsViveirosTotal, String emailPropriedade,
 			Integer telefonePropriedade, Integer cepPropriedade, String bairroPropriedade, String cidadePropriedade,
 			Integer numeroPropriedade, String enderecoPropriedade, String nomePropriedade, String nomeProprietario,
@@ -53,7 +55,8 @@ public class Propriedade implements Serializable {
 		this.nomeProprietario = nomeProprietario;
 		this.observacoes = observacoes;
 	}
-//Aqui os Getters e Setters , sem o serial version
+
+	// Getters e Setters , sem o serial version
 	public Integer getId() {
 		return id;
 	}
@@ -157,7 +160,8 @@ public class Propriedade implements Serializable {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-//Hash code and Equals  só o ID
+
+	// HashCode e equals só o ID
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -183,5 +187,4 @@ public class Propriedade implements Serializable {
 		return true;
 	}
 
-	
 }

@@ -10,23 +10,26 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Entity
-public class Despesca implements Serializable{
+public class Despesca implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	//atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer qtdPeixeDespescado;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataDespesca;
-	
-	//construtor vazio 
+
+	// Construtores
 	public Despesca() {
 	}
 
-	//contrutor
 	public Despesca(Integer id, Integer qtdPeixeDespescado, Date dataDespesca) {
 		super();
 		this.id = id;
@@ -34,7 +37,7 @@ public class Despesca implements Serializable{
 		this.dataDespesca = dataDespesca;
 	}
 
-	//getters e setters
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -59,7 +62,7 @@ public class Despesca implements Serializable{
 		this.dataDespesca = dataDespesca;
 	}
 
-	//hashCode e equals
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;

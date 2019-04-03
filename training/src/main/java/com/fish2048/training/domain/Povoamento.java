@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Povoamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	// atributos da classe
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,11 +31,10 @@ public class Povoamento implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataPovoamento;
 
-	// construtor vazio
+	// Construtores
 	public Povoamento() {
 	}
 
-	// construtor
 	public Povoamento(Integer id, Integer qtdPeixePovoamento, Date dataPovoamento) {
 		super();
 		this.id = id;
@@ -43,7 +42,7 @@ public class Povoamento implements Serializable {
 		this.dataPovoamento = dataPovoamento;
 	}
 
-	// getters e setters
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -68,7 +67,7 @@ public class Povoamento implements Serializable {
 		this.dataPovoamento = dataPovoamento;
 	}
 
-	// hashCode e equals
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;

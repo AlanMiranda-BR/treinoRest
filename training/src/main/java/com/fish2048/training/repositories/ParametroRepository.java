@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Parametro;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @Repository
-public interface ParametroRepository extends JpaRepository<Parametro, Integer>{
-
-}
+public interface ParametroRepository extends JpaRepository<Parametro, Integer>{}

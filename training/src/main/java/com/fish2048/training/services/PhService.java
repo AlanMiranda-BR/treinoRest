@@ -10,38 +10,39 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Ph;
 import com.fish2048.training.repositories.PhRepository;
 
-
-
+/**
+ * @author Gabriel Mauro
+ *
+ */
 @Service
 public class PhService {
 	@Autowired
 	private PhRepository phRepository;
-	
-	//FIND ALL
+
+	// CREATES
+	public Ph insert(Ph ph) {
+		ph.setId(null);
+		return phRepository.save(ph);
+	}
+
+	// READS
 	public List<Ph> findAll() {
 		return phRepository.findAll();
 	}
-	
-	//FIND BY ID
-	public Ph find(Integer id ) {
-		Optional<Ph> obj = phRepository.findById(id);
-		return obj.orElse(null);
-	}
-	
-	//INSERT
-	public Ph insert(Ph obj) {
-		obj.setId(null);
-		return phRepository.save(obj);
-	}
-	
-	// UPDATE
-	public Ph update(Ph obj) {
-		Ph newObj = find(obj.getId());
-		newObj.setAfericaoPh(obj.getAfericaoPh());
-		return phRepository.save(newObj);
+
+	public Ph find(Integer id) {
+		Optional<Ph> ph = phRepository.findById(id);
+		return ph.orElse(null);
 	}
 
-	// DELETE
+	// UPDATES
+	public Ph update(Ph ph) {
+		Ph newPh = find(ph.getId());
+		newPh.setAfericaoPh(ph.getAfericaoPh());
+		return phRepository.save(newPh);
+	}
+
+	// DELETES
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -50,6 +51,5 @@ public class PhService {
 			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
 		}
 	}
-	
 
 }

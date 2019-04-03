@@ -2,37 +2,50 @@ package com.fish2048.training.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * 
  * @author Rafael Silva Neukirchen
+ * @todo faltou o construtor principal e onde era Float coloquei Double, no mais
+ *       tudo OK
  *
  */
 
 @Entity
 public class CustoRacao implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataCompra;
 	private Integer qtdCompra;
-	private Float valorTotalCompra;
+	private Double valorTotalCompra;
 	private String observacoes;
-	
-	//Construtor
+
+	// Construtores
 	public CustoRacao() {
 	}
 
-	//get e setters
-	
+	public CustoRacao(Integer id, Date dataCompra, Integer qtdCompra, Double valorTotalCompra, String observacoes) {
+		super();
+		this.id = id;
+		this.dataCompra = dataCompra;
+		this.qtdCompra = qtdCompra;
+		this.valorTotalCompra = valorTotalCompra;
+		this.observacoes = observacoes;
+	}
+
+	// Getters e Setters
 	public Date getDataCompra() {
 		return dataCompra;
 	}
@@ -49,11 +62,11 @@ public class CustoRacao implements Serializable {
 		this.qtdCompra = qtdCompra;
 	}
 
-	public Float getValorTotalCompra() {
+	public Double getValorTotalCompra() {
 		return valorTotalCompra;
 	}
 
-	public void setValorTotalCompra(Float valorTotalCompra) {
+	public void setValorTotalCompra(Double valorTotalCompra) {
 		this.valorTotalCompra = valorTotalCompra;
 	}
 
@@ -64,7 +77,7 @@ public class CustoRacao implements Serializable {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +86,7 @@ public class CustoRacao implements Serializable {
 		this.id = id;
 	}
 
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;

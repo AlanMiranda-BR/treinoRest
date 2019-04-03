@@ -16,40 +16,43 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fish2048.training.domain.Despesca;
 import com.fish2048.training.services.DespescaService;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @RestController
 @RequestMapping(value = "/despescas")
 public class DespescaResource {
 	@Autowired
 	private DespescaService despescaService;
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Despesca> find(@PathVariable Integer id){
-		Despesca obj = despescaService.find(id);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Despesca> find(@PathVariable Integer id) {
+		Despesca despesca = despescaService.find(id);
+		return ResponseEntity.ok().body(despesca);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<List<Despesca>> findAll(){
+	public ResponseEntity<List<Despesca>> findAll() {
 		return ResponseEntity.ok().body(despescaService.findAll());
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Despesca obj){
-		despescaService.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody Despesca despesca) {
+		despescaService.insert(despesca);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Despesca obj, @PathVariable Integer id){
-		obj.setId(id);
-		despescaService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Despesca despesca, @PathVariable Integer id) {
+		despesca.setId(id);
+		despescaService.update(despesca);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		despescaService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
 }

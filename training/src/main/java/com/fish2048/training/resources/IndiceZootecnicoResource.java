@@ -16,38 +16,42 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fish2048.training.domain.IndiceZootecnico;
 import com.fish2048.training.services.IndiceZootecnicoService;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @RestController
 @RequestMapping(value = "/indiceZootecnicos")
 public class IndiceZootecnicoResource {
-	
+
 	@Autowired
 	private IndiceZootecnicoService indiceZootecnicoService;
-	
+
 	@GetMapping
 	public ResponseEntity<List<IndiceZootecnico>> findAll() {
-		List<IndiceZootecnico> obj = indiceZootecnicoService.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<IndiceZootecnico> indiceZootecnico = indiceZootecnicoService.findAll();
+		return ResponseEntity.ok().body(indiceZootecnico);
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<IndiceZootecnico> find(@PathVariable Integer id) {
-		IndiceZootecnico obj = indiceZootecnicoService.find(id);
-		return ResponseEntity.ok().body(obj);
+		IndiceZootecnico indiceZootecnico = indiceZootecnicoService.find(id);
+		return ResponseEntity.ok().body(indiceZootecnico);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody IndiceZootecnico obj) {
-		obj = indiceZootecnicoService.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody IndiceZootecnico indiceZootecnico) {
+		indiceZootecnico = indiceZootecnicoService.insert(indiceZootecnico);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody IndiceZootecnico obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = indiceZootecnicoService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody IndiceZootecnico indiceZootecnico, @PathVariable Integer id) {
+		indiceZootecnico.setId(id);
+		indiceZootecnico = indiceZootecnicoService.update(indiceZootecnico);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		indiceZootecnicoService.delete(id);

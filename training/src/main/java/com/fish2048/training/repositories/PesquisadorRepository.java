@@ -5,8 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Pesquisador;
 
+/**
+ * @author Wellinton Camboim
+ *
+ */
 @Repository
-public interface PesquisadorRepository extends JpaRepository<Pesquisador, Integer> {
-	
-
-}
+public interface PesquisadorRepository extends JpaRepository<Pesquisador, Integer> {}

@@ -16,37 +16,41 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fish2048.training.domain.Cultivo;
 import com.fish2048.training.services.CultivoService;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @RestController
 @RequestMapping(value = "/cultivos")
 public class CultivoResources {
 	@Autowired
 	private CultivoService cultivoService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Cultivo>> findAll(){
+	public ResponseEntity<List<Cultivo>> findAll() {
 		return ResponseEntity.ok().body(cultivoService.findAll());
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Cultivo> find(@PathVariable Integer id){
+	public ResponseEntity<Cultivo> find(@PathVariable Integer id) {
 		return ResponseEntity.ok().body(cultivoService.find(id));
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Cultivo obj){
-		obj = cultivoService.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody Cultivo cultivo) {
+		cultivo = cultivoService.insert(cultivo);
 		return ResponseEntity.created(null).build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Cultivo obj, @PathVariable Integer id){
-		obj.setId(id);
-		cultivoService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Cultivo cultivo, @PathVariable Integer id) {
+		cultivo.setId(id);
+		cultivoService.update(cultivo);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		cultivoService.delete(id);
 		return ResponseEntity.noContent().build();
 	}

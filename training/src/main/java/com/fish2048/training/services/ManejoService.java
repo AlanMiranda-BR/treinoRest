@@ -10,48 +10,49 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Manejo;
 import com.fish2048.training.repositories.ManejoRepository;
 
+/**
+ * @author Gabriel Mauro
+ *
+ */
 @Service
 public class ManejoService {
 	@Autowired
 	private ManejoRepository manejoRepository;
-	
-	// FIND ALL
-		public List<Manejo> findAll() {
-			List<Manejo> obj = manejoRepository.findAll();
-			return obj;
-		}
-	
-	//FIND BY ID
+
+	// READS
+	public List<Manejo> findAll() {
+		List<Manejo> manejo = manejoRepository.findAll();
+		return manejo;
+	}
+
 	public Manejo find(Integer id) {
-		Optional<Manejo> obj = manejoRepository.findById(id);
-		return obj.orElse(null);
+		Optional<Manejo> manejo = manejoRepository.findById(id);
+		return manejo.orElse(null);
 	}
-	
-	//INSERT
-	public Manejo insert(Manejo obj) {
-		obj.setId(null);
-		return manejoRepository.save(obj);  
+
+	// CREATES
+	public Manejo insert(Manejo manejo) {
+		manejo.setId(null);
+		return manejoRepository.save(manejo);
 	}
-	
-	// UPDATE
-		public Manejo update(Manejo obj) {
-			Manejo newObj = find(obj.getId());
-			newObj.setDataHoraManejo(obj.getDataHoraManejo());
-			newObj.setTipoManejo(obj.getTipoManejo());
-			newObj.setObservacoes(obj.getObservacoes());
-			return manejoRepository.save(newObj);
-		}
 
-		// DELETE
-		public void delete(Integer id) {
-			find(id);
-			try {
-				manejoRepository.deleteById(id);
-			} catch (DataIntegrityViolationException e) {
-				throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
-			}
-		}
+	// UPDATES
+	public Manejo update(Manejo manejo) {
+		Manejo newManejo = find(manejo.getId());
+		newManejo.setDataHoraManejo(manejo.getDataHoraManejo());
+		newManejo.setTipoManejo(manejo.getTipoManejo());
+		newManejo.setObservacoes(manejo.getObservacoes());
+		return manejoRepository.save(newManejo);
+	}
 
-	
+	// DELETES
+	public void delete(Integer id) {
+		find(id);
+		try {
+			manejoRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityViolationException("Não é possivel excluir este registro!");
+		}
+	}
 
 }

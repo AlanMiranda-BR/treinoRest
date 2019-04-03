@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Biometria;
 
+/**
+ * @author Pedro Lz
+ *
+ */
 @Repository
-public interface BiometriaRepository extends JpaRepository<Biometria, Integer> {
-
-}
+public interface BiometriaRepository extends JpaRepository<Biometria, Integer> {}

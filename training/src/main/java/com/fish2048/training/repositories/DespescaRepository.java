@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Despesca;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Repository
-public interface DespescaRepository extends JpaRepository<Despesca, Integer> {
-}
+public interface DespescaRepository extends JpaRepository<Despesca, Integer> {}

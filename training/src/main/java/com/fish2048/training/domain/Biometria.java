@@ -11,16 +11,15 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * @author pedro lz
+ * @author Pedro Lz
  *
- *	Falta adicionar métodos CalcularPesoMedi()
- *	e CalcularComprimentoMedio()
+ * @Todo Falta adicionar métodos CalcularPesoMedi() e CalcularComprimentoMedio()
  */
 @Entity
 public class Biometria implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
-	// atributos da classe
+
+	// Atributos da classe
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -30,11 +29,13 @@ public class Biometria implements Serializable {
 	private Double pesoMedio;
 	private Double comprimentoMedio;
 	private String observacoes;
-	
-	// Construtores e get e setters
-	public Biometria() {}
 
-	public Biometria(Integer id, Date dataHoraBiometria, Double pesoMedio, Double comprimentoMedio, String observacoes) {
+	// Construtores
+	public Biometria() {
+	}
+
+	public Biometria(Integer id, Date dataHoraBiometria, Double pesoMedio, Double comprimentoMedio,
+			String observacoes) {
 		this.id = id;
 		this.dataHoraBiometria = dataHoraBiometria;
 		this.pesoMedio = pesoMedio;
@@ -42,6 +43,7 @@ public class Biometria implements Serializable {
 		this.observacoes = observacoes;
 	}
 
+	// Getters e Setters
 	public Integer getId() {
 		return id;
 	}
@@ -82,6 +84,7 @@ public class Biometria implements Serializable {
 		this.observacoes = observacoes;
 	}
 
+	// HashCode e equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;

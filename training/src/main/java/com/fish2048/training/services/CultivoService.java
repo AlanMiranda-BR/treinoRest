@@ -9,37 +9,41 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Cultivo;
 import com.fish2048.training.repositories.CultivoRepository;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Service
 public class CultivoService {
 	@Autowired
 	private CultivoRepository cultivoRepository;
-	
-	//Create
-	public Cultivo insert(Cultivo obj) {
-		obj.setId(null);
-		return cultivoRepository.save(obj);
+
+	// CREATES
+	public Cultivo insert(Cultivo cultivo) {
+		cultivo.setId(null);
+		return cultivoRepository.save(cultivo);
 	}
-	
-	//Read
+
+	// READS
 	public Cultivo find(Integer id) {
-		Optional<Cultivo> obj = cultivoRepository.findById(id); 
-		return obj.orElse(null);
+		Optional<Cultivo> cultivo = cultivoRepository.findById(id);
+		return cultivo.orElse(null);
 	}
-	
+
 	public List<Cultivo> findAll() {
 		return cultivoRepository.findAll();
 	}
-	
-	//Update
-	public Cultivo update(Cultivo obj) {
-		Cultivo newObj = find(obj.getId());
-		newObj.setDescricao(obj.getDescricao());
-		return cultivoRepository.save(newObj);
+
+	// UPDATES
+	public Cultivo update(Cultivo cultivo) {
+		Cultivo newCultivo = find(cultivo.getId());
+		newCultivo.setDescricao(cultivo.getDescricao());
+		return cultivoRepository.save(newCultivo);
 	}
-	
-	//Delete
+
+	// DELETES
 	public void delete(Integer id) {
 		cultivoRepository.deleteById(id);
 	}
-	
+
 }

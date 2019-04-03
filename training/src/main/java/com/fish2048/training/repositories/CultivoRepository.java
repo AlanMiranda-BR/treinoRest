@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Cultivo;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Repository
-public interface CultivoRepository extends JpaRepository<Cultivo, Integer>{
-}
+public interface CultivoRepository extends JpaRepository<Cultivo, Integer>{}

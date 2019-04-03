@@ -9,36 +9,40 @@ import org.springframework.stereotype.Service;
 import com.fish2048.training.domain.Despesca;
 import com.fish2048.training.repositories.DespescaRepository;
 
+/**
+ * @author Alan Felipe Miranda
+ *
+ */
 @Service
 public class DespescaService {
 	@Autowired
 	private DespescaRepository despescaRepository;
 
-	// Create
-	public Despesca insert(Despesca obj) {
-		obj.setId(null);
-		return despescaRepository.save(obj);
+	// CREATES
+	public Despesca insert(Despesca despesca) {
+		despesca.setId(null);
+		return despescaRepository.save(despesca);
 	}
-	
-	// Read
+
+	// READS
 	public Despesca find(Integer id) {
-		Optional<Despesca> obj = despescaRepository.findById(id);
-		return obj.orElse(null);
+		Optional<Despesca> despesca = despescaRepository.findById(id);
+		return despesca.orElse(null);
 	}
 
 	public List<Despesca> findAll() {
 		return despescaRepository.findAll();
 	}
 
-	// Update
-	public Despesca update(Despesca obj) {
-		Despesca newObj = find(obj.getId());
-		newObj.setDataDespesca(obj.getDataDespesca());
-		newObj.setQtdPeixeDespescado(obj.getQtdPeixeDespescado());
-		return despescaRepository.save(newObj);
+	// UPDATES
+	public Despesca update(Despesca despesca) {
+		Despesca newDespesca = find(despesca.getId());
+		newDespesca.setDataDespesca(despesca.getDataDespesca());
+		newDespesca.setQtdPeixeDespescado(despesca.getQtdPeixeDespescado());
+		return despescaRepository.save(newDespesca);
 	}
 
-	// Delete
+	// DELETES
 	public void delete(Integer id) {
 		despescaRepository.deleteById(id);
 	}

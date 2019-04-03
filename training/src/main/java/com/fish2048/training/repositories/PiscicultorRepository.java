@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.fish2048.training.domain.Piscicultor;
 
+/**
+ * @author Jhon
+ *
+ */
 @Repository
-public interface PiscicultorRepository extends JpaRepository<Piscicultor, Integer>{
-
-}
+public interface PiscicultorRepository extends JpaRepository<Piscicultor, Integer>{}

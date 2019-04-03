@@ -15,50 +15,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.fish2048.training.domain.LotePeixe;
-import com.fish2048.training.services.LotePeixeService;
+import com.fish2048.training.domain.Piscicultor;
+import com.fish2048.training.services.PiscicultorService;
 
 /**
- * @author Vitória Ramos
+ * @author Jhon
  *
  */
 @RestController
-@RequestMapping(value = "/lotes")
-public class LotePeixeResource {
+@RequestMapping(value = "/piscicultores")
+public class PiscicultorResource {
 	@Autowired
-	private LotePeixeService lotePeixeService;
+	private PiscicultorService piscicultorService;
 
 	@GetMapping
-	public ResponseEntity<List<LotePeixe>> findAll() {
-		List<LotePeixe> lotePeixe = lotePeixeService.findAll();
-		return ResponseEntity.ok().body(lotePeixe);
+	public ResponseEntity<List<Piscicultor>> findAll() {
+		List<Piscicultor> piscicultor = piscicultorService.findAll();
+		return ResponseEntity.ok().body(piscicultor);
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<LotePeixe> find(@PathVariable Integer id) {
-		LotePeixe lotePeixe = lotePeixeService.find(id);
-		return ResponseEntity.ok().body(lotePeixe);
+	public ResponseEntity<Piscicultor> find(@PathVariable Integer id) {
+		Piscicultor piscicultor = piscicultorService.find(id);
+		return ResponseEntity.ok().body(piscicultor);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody LotePeixe lotePeixe) {
-		lotePeixe = lotePeixeService.insert(lotePeixe);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(lotePeixe.getId())
+	public ResponseEntity<Void> insert(@RequestBody Piscicultor piscicultor) {
+		piscicultor = piscicultorService.insert(piscicultor);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(piscicultor.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody LotePeixe lotePeixe, @PathVariable Integer id) {
-		lotePeixe.setId(id);
-		lotePeixe = lotePeixeService.update(lotePeixe);
+	public ResponseEntity<Void> update(@RequestBody Piscicultor piscicultor, @PathVariable Integer id) {
+		piscicultor.setId(id);
+		piscicultor = piscicultorService.update(piscicultor);
 		return ResponseEntity.noContent().build();
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
-		lotePeixeService.delete(id);
+		piscicultorService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-
 }

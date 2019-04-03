@@ -18,42 +18,43 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.fish2048.training.domain.Ph;
 import com.fish2048.training.services.PhService;
 
-
 /**
- * @author Gabriel Mauro Controller reponsável por atender as requisições
- *         HTTP do cliente e retornar as respostas.
+ * @author Gabriel Mauro
+ * @Todo Controller reponsável por atender as requisições HTTP do cliente e
+ *       retornar as respostas.
+ * 
  */
 @RestController
 @RequestMapping(value = "/phs")
 
 public class PhResource {
-	
+
 	@Autowired
 	private PhService phService;
 
 	@GetMapping
 	public ResponseEntity<List<Ph>> findAll() {
-		List<Ph> obj = phService.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<Ph> ph = phService.findAll();
+		return ResponseEntity.ok().body(ph);
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Ph> find(@PathVariable Integer id) {
-		Ph obj = phService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Ph ph = phService.find(id);
+		return ResponseEntity.ok().body(ph);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody Ph obj) {
-		obj = phService.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Void> insert(@RequestBody Ph ph) {
+		ph = phService.insert(ph);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ph.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody Ph obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = phService.update(obj);
+	public ResponseEntity<Void> update(@RequestBody Ph ph, @PathVariable Integer id) {
+		ph.setId(id);
+		ph = phService.update(ph);
 		return ResponseEntity.noContent().build();
 	}
 
