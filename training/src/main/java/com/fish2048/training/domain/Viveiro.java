@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,22 +23,24 @@ public class Viveiro implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer idPropriedade;
-	private Integer idTipoViveiro;
 	private Integer idPovoamento;
 	private Float superficieAgua;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataCriacaoViveiro;
 
+	// Relacionamentos
+	@ManyToOne
+	private TipoViveiro tipoViveiro;
+
 	// Construtores
 	public Viveiro() {
 	}
 
-	public Viveiro(Integer id, Integer idPropriedade, Integer idTipoViveiro, Integer idPovoamento, Float superficieAgua,
+	public Viveiro(Integer id, Integer idPropriedade, Integer idPovoamento, Float superficieAgua,
 			Date dataCriacaoViveiro) {
 		super();
 		this.id = id;
 		this.idPropriedade = idPropriedade;
-		this.idTipoViveiro = idTipoViveiro;
 		this.idPovoamento = idPovoamento;
 		this.superficieAgua = superficieAgua;
 		this.dataCriacaoViveiro = dataCriacaoViveiro;
@@ -58,14 +61,6 @@ public class Viveiro implements Serializable {
 
 	public void setIdPropriedade(Integer idPropriedade) {
 		this.idPropriedade = idPropriedade;
-	}
-
-	public Integer getIdTipoViveiro() {
-		return idTipoViveiro;
-	}
-
-	public void setIdTipoViveiro(Integer idTipoViveiro) {
-		this.idTipoViveiro = idTipoViveiro;
 	}
 
 	public Integer getIdPovoamento() {
@@ -90,6 +85,14 @@ public class Viveiro implements Serializable {
 
 	public void setDataCriacaoViveiro(Date dataCriacaoViveiro) {
 		this.dataCriacaoViveiro = dataCriacaoViveiro;
+	}
+
+	public TipoViveiro getTipoViveiro() {
+		return tipoViveiro;
+	}
+
+	public void setTipoViveiro(TipoViveiro tipoViveiro) {
+		this.tipoViveiro = tipoViveiro;
 	}
 
 	// Hash and Equals

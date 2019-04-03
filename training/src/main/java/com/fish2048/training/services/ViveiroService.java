@@ -42,7 +42,6 @@ public class ViveiroService {
 	// UPDATES
 	public Viveiro update(Viveiro viveiro) {
 		Viveiro newViveiro = find(viveiro.getId());
-		newViveiro.setIdTipoViveiro(viveiro.getIdTipoViveiro());
 		newViveiro.setSuperficieAgua(viveiro.getSuperficieAgua());
 		return viveiroRepository.save(newViveiro);
 	}

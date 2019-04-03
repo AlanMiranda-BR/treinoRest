@@ -39,7 +39,7 @@ public class TipoViveiroService {
 	// UPDATES
 	public TipoViveiro update(TipoViveiro tipoViveiro) {
 		TipoViveiro newTipoViveiro = find(tipoViveiro.getId());
-		newTipoViveiro.setObservacoes(tipoViveiro.getObservacoes());
+		newTipoViveiro.setDescricao(tipoViveiro.getDescricao());
 		return tipoViveiroRepository.save(newTipoViveiro);
 	}
 	
