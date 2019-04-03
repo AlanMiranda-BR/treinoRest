@@ -191,7 +191,7 @@ public class TrainingApplication implements CommandLineRunner {
 		//PHs
 		Ph ph1 = new Ph(null, "Ácido");
 		Ph ph2 = new Ph(null, "Basico");
-		Ph ph3 = new Ph(null, "Ácido");
+		Ph ph3 = new Ph(null, "Neutro");
 		phRepository.saveAll(Arrays.asList(ph1, ph2, ph3));
 		
 		//PISCICULTORES
@@ -223,6 +223,8 @@ public class TrainingApplication implements CommandLineRunner {
 		Racao rac2 = new Racao(null, "Biscoitos", 651, "Pedigree");
 		Racao rac3 = new Racao(null, "Massinha", 651, "Não provei");
 		racaoRepository.saveAll(Arrays.asList(rac1, rac2, rac3));
+		
+		//TIPO DE VIVEIROS
 		
 	}
 
