@@ -1,14 +1,9 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author Gabriel Mauro
@@ -19,33 +14,28 @@ public class Manejo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	// Atributos
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@EmbeddedId
+	private ManejoPK id = new ManejoPK();
 	private String tipoManejo;
 	private String observacoes;
-	// Junção do data e hora dos atributos manejo
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-	private Date dataHoraManejo;
-
+	
 	// Construtores
 	public Manejo() {
 	}
 
-	public Manejo(Integer id, String tipoManejo, String observacoes, Date dataHoraManejo) {
+	public Manejo(ManejoPK id, String tipoManejo, String observacoes) {
 		super();
 		this.id = id;
 		this.tipoManejo = tipoManejo;
 		this.observacoes = observacoes;
-		this.dataHoraManejo = dataHoraManejo;
 	}
 
 	// Getters and Setters
-	public Integer getId() {
+	public ManejoPK getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(ManejoPK id) {
 		this.id = id;
 	}
 
@@ -63,14 +53,6 @@ public class Manejo implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
-	}
-
-	public Date getDataHoraManejo() {
-		return dataHoraManejo;
-	}
-
-	public void setDataHoraManejo(Date dataHoraManejo) {
-		this.dataHoraManejo = dataHoraManejo;
 	}
 
 	// HashCode e equals
@@ -98,5 +80,8 @@ public class Manejo implements Serializable {
 			return false;
 		return true;
 	}
+
+	
+	
 
 }

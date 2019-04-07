@@ -1,12 +1,16 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Rafael Silva Neukirchen
@@ -24,6 +28,11 @@ public class Racao implements Serializable {
 	private String tipoRacao;
 	private Integer qtdProteina;
 	private String observacoes;
+	
+	// Relacionamentos
+	@OneToMany(mappedBy = "racao")
+	@JsonIgnore
+	private List<CustoRacao> custoRacoes;
 
 	// Construtores
 	public Racao() {
@@ -68,6 +77,14 @@ public class Racao implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public List<CustoRacao> getCustoRacoes() {
+		return custoRacoes;
+	}
+
+	public void setCustoRacoes(List<CustoRacao> custoRacoes) {
+		this.custoRacoes = custoRacoes;
 	}
 
 	// HashCode e Equals

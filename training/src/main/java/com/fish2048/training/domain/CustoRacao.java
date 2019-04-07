@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -31,6 +32,10 @@ public class CustoRacao implements Serializable {
 	private Integer qtdCompra;
 	private Double valorTotalCompra;
 	private String observacoes;
+	
+	//Relacionamentos
+	@ManyToOne
+	private Racao racao;
 
 	// Construtores
 	public CustoRacao() {
@@ -84,6 +89,14 @@ public class CustoRacao implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Racao getRacao() {
+		return racao;
+	}
+
+	public void setRacao(Racao racao) {
+		this.racao = racao;
 	}
 
 	// HashCode e equals

@@ -3,10 +3,13 @@ package com.fish2048.training.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -25,6 +28,11 @@ public class Despesca implements Serializable {
 	private Integer qtdPeixeDespescado;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataDespesca;
+	
+	// Relacionamentos
+	@OneToOne(cascade = CascadeType.ALL)
+    @MapsId
+	private Povoamento povoamento;
 
 	// Construtores
 	public Despesca() {
@@ -60,6 +68,14 @@ public class Despesca implements Serializable {
 
 	public void setDataDespesca(Date dataDespesca) {
 		this.dataDespesca = dataDespesca;
+	}
+
+	public Povoamento getPovoamento() {
+		return povoamento;
+	}
+
+	public void setPovoamento(Povoamento povoamento) {
+		this.povoamento = povoamento;
 	}
 
 	// HashCode e equals

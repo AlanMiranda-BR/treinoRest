@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -33,7 +34,14 @@ public class Parametro implements Serializable {
 	private String sanilidade;
 	private String saturacao;
 	private String observacoes;
+	
+	// Relacionamentos
+	@ManyToOne
+	private Povoamento povoamento;
 
+	@ManyToOne
+	private Ph ph;
+	
 	// Contrutores
 	public Parametro() {
 	}
@@ -133,6 +141,22 @@ public class Parametro implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public Povoamento getPovoamento() {
+		return povoamento;
+	}
+
+	public void setPovoamento(Povoamento povoamento) {
+		this.povoamento = povoamento;
+	}
+
+	public Ph getPh() {
+		return ph;
+	}
+
+	public void setPh(Ph ph) {
+		this.ph = ph;
 	}
 
 	// HashCode e equals

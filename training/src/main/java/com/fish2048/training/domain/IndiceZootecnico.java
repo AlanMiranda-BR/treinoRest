@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Pedro Lz
@@ -33,6 +35,10 @@ public class IndiceZootecnico implements Serializable {
 	private Float conversaoAlimentar;
 	private String observacoes;
 
+	// Relacionamentos
+	@ManyToOne
+	@JsonIgnore
+	private Povoamento povoamento;
 	// Construtores
 	public IndiceZootecnico() {
 	}
@@ -123,6 +129,14 @@ public class IndiceZootecnico implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public Povoamento getPovoamento() {
+		return povoamento;
+	}
+
+	public void setPovoamento(Povoamento povoamento) {
+		this.povoamento = povoamento;
 	}
 
 	// HashCode e equals

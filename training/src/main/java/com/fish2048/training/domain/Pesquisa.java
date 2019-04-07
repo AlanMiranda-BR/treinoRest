@@ -2,13 +2,16 @@ package com.fish2048.training.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Wellinton Camboim
@@ -26,6 +29,11 @@ public class Pesquisa implements Serializable {
 	private Date dataInicio;
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataFim;
+	
+	// Relacionamentos
+	@OneToMany(mappedBy = "pesquisa")
+	@JsonIgnore
+	private List<Povoamento> povamentos;
 
 	// Construtores
 	public Pesquisa() {
@@ -61,6 +69,14 @@ public class Pesquisa implements Serializable {
 
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public List<Povoamento> getPovamentos() {
+		return povamentos;
+	}
+
+	public void setPovamentos(List<Povoamento> povamentos) {
+		this.povamentos = povamentos;
 	}
 
 	// HashCode e equals

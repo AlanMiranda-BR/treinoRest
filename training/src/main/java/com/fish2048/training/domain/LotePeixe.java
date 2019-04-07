@@ -1,14 +1,19 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Vitória Ramos
@@ -27,7 +32,16 @@ public class LotePeixe implements Serializable {
 	private Integer qtdTotal;
 	private Double biomassa;
 	private Integer pesoMedio;
-
+	
+	// Relacionamentos
+	@ManyToMany(mappedBy = "lotesPeixes")
+	@JsonIgnore
+	private List<Povoamento> povoamentos = new ArrayList<>();
+	
+	@ManyToOne
+	@JsonIgnore
+	private EspeciePeixe especiePeixe;
+	
 	// Construtores
 	public LotePeixe() {
 	}
@@ -80,6 +94,22 @@ public class LotePeixe implements Serializable {
 
 	public void setPesoMedio(Integer pesoMedio) {
 		this.pesoMedio = pesoMedio;
+	}
+
+	public List<Povoamento> getPovoamentos() {
+		return povoamentos;
+	}
+
+	public void setPovoamentos(List<Povoamento> povoamentos) {
+		this.povoamentos = povoamentos;
+	}
+
+	public EspeciePeixe getEspeciePeixe() {
+		return especiePeixe;
+	}
+
+	public void setEspeciePeixe(EspeciePeixe especiePeixe) {
+		this.especiePeixe = especiePeixe;
 	}
 
 	// HashCode e equals

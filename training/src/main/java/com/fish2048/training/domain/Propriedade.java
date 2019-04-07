@@ -1,11 +1,17 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Jhon
@@ -31,6 +37,15 @@ public class Propriedade implements Serializable {
 	private String nomePropriedade;
 	private String nomeProprietario;
 	private String observacoes;
+	
+	// Relacionamentos
+	@ManyToMany(mappedBy = "propriedades")
+	@JsonIgnore
+	private List<Piscicultor> piscicultores = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "propriedade")
+	@JsonIgnore
+	private List<Viveiro> viveiros;
 
 	// Construtores
 	public Propriedade() {
@@ -159,6 +174,22 @@ public class Propriedade implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public List<Piscicultor> getPiscicultores() {
+		return piscicultores;
+	}
+
+	public void setPiscicultores(List<Piscicultor> piscicultores) {
+		this.piscicultores = piscicultores;
+	}
+
+	public List<Viveiro> getViveiros() {
+		return viveiros;
+	}
+
+	public void setViveiros(List<Viveiro> viveiros) {
+		this.viveiros = viveiros;
 	}
 
 	// HashCode e equals só o ID

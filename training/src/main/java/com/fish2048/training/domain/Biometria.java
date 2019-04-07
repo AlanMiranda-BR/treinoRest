@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,6 +30,10 @@ public class Biometria implements Serializable {
 	private Double pesoMedio;
 	private Double comprimentoMedio;
 	private String observacoes;
+	
+	// Relacionamentos
+	@ManyToOne
+	private Povoamento povoamento;
 
 	// Construtores
 	public Biometria() {
@@ -82,6 +87,14 @@ public class Biometria implements Serializable {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public Povoamento getPovoamento() {
+		return povoamento;
+	}
+
+	public void setPovoamento(Povoamento povoamento) {
+		this.povoamento = povoamento;
 	}
 
 	// HashCode e equals

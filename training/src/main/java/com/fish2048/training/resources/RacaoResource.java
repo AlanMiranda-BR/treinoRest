@@ -23,7 +23,7 @@ import com.fish2048.training.services.RacaoService;
  *
  */
 @RestController
-@RequestMapping(value = "/Racao")
+@RequestMapping(value = "/racoes")
 public class RacaoResource {
 
 	@Autowired

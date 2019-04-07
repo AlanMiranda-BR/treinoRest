@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.fish2048.training.domain.Povoamento;
 import com.fish2048.training.domain.Viveiro;
 import com.fish2048.training.repositories.ViveiroRepository;
 

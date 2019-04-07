@@ -1,11 +1,18 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Jhon
@@ -23,6 +30,15 @@ public class Piscicultor implements Serializable {
 	private String especialidade;
 	private String telefone;
 	private String email;
+	
+	// Relacionamentos
+	@OneToMany(mappedBy = "piscicultor")
+	@JsonIgnore
+	private List<Povoamento> povoamentos = new ArrayList<>();
+	
+	@ManyToMany
+	@JoinTable(name = "piscicultor_propriedade")
+	private List<Propriedade> propriedades = new ArrayList<>();
 
 	// Construtores
 	public Piscicultor() {
@@ -76,6 +92,22 @@ public class Piscicultor implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Povoamento> getPovoamentos() {
+		return povoamentos;
+	}
+
+	public void setPovoamentos(List<Povoamento> povoamentos) {
+		this.povoamentos = povoamentos;
+	}
+
+	public List<Propriedade> getPropriedades() {
+		return propriedades;
+	}
+
+	public void setPropriedades(List<Propriedade> propriedades) {
+		this.propriedades = propriedades;
 	}
 
 	// HashCode e equals

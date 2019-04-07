@@ -21,7 +21,7 @@ import com.fish2048.training.services.IndiceZootecnicoService;
  *
  */
 @RestController
-@RequestMapping(value = "/indiceZootecnicos")
+@RequestMapping(value = "/indicesZootecnicos")
 public class IndiceZootecnicoResource {
 
 	@Autowired

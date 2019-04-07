@@ -1,15 +1,20 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Jhon
@@ -22,8 +27,6 @@ public class Viveiro implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private Integer idPropriedade;
-	private Integer idPovoamento;
 	private Float superficieAgua;
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date dataCriacaoViveiro;
@@ -32,16 +35,20 @@ public class Viveiro implements Serializable {
 	@ManyToOne
 	private TipoViveiro tipoViveiro;
 
+	@OneToMany(mappedBy = "viveiro", cascade = CascadeType.REMOVE)
+	@JsonIgnore
+	private List<Povoamento> povoamentos = new ArrayList<>();
+	
+	@ManyToOne
+	private Propriedade propriedade;
+
 	// Construtores
 	public Viveiro() {
 	}
 
-	public Viveiro(Integer id, Integer idPropriedade, Integer idPovoamento, Float superficieAgua,
-			Date dataCriacaoViveiro) {
+	public Viveiro(Integer id, Float superficieAgua, Date dataCriacaoViveiro) {
 		super();
 		this.id = id;
-		this.idPropriedade = idPropriedade;
-		this.idPovoamento = idPovoamento;
 		this.superficieAgua = superficieAgua;
 		this.dataCriacaoViveiro = dataCriacaoViveiro;
 	}
@@ -53,22 +60,6 @@ public class Viveiro implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getIdPropriedade() {
-		return idPropriedade;
-	}
-
-	public void setIdPropriedade(Integer idPropriedade) {
-		this.idPropriedade = idPropriedade;
-	}
-
-	public Integer getIdPovoamento() {
-		return idPovoamento;
-	}
-
-	public void setIdPovoamento(Integer idPovoamento) {
-		this.idPovoamento = idPovoamento;
 	}
 
 	public Float getSuperficieAgua() {
@@ -93,6 +84,22 @@ public class Viveiro implements Serializable {
 
 	public void setTipoViveiro(TipoViveiro tipoViveiro) {
 		this.tipoViveiro = tipoViveiro;
+	}
+
+	public List<Povoamento> getPovoamentos() {
+		return povoamentos;
+	}
+
+	public void setPovoamentos(List<Povoamento> povoamentos) {
+		this.povoamentos = povoamentos;
+	}
+
+	public Propriedade getPropriedade() {
+		return propriedade;
+	}
+
+	public void setPropriedade(Propriedade propriedade) {
+		this.propriedade = propriedade;
 	}
 
 	// Hash and Equals

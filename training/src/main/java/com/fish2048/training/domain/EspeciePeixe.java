@@ -1,11 +1,14 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Vitória Ramos
@@ -22,6 +25,10 @@ public class EspeciePeixe implements Serializable {
 	private String nomeCientifico;
 	private String nomePopular;
 
+	// Relacionamentos
+	@OneToMany(mappedBy = "especiePeixe")
+	private List<LotePeixe> lotepeixe = new ArrayList<>();
+	
 	// Construtores
 	public EspeciePeixe() {
 	}
@@ -56,6 +63,14 @@ public class EspeciePeixe implements Serializable {
 
 	public void setNomePopular(String nomePopular) {
 		this.nomePopular = nomePopular;
+	}
+
+	public List<LotePeixe> getLotepeixe() {
+		return lotepeixe;
+	}
+
+	public void setLotepeixe(List<LotePeixe> lotepeixe) {
+		this.lotepeixe = lotepeixe;
 	}
 
 	// HashCode e equals
