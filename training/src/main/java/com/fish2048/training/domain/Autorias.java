@@ -1,11 +1,17 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Wellinton Camboim
@@ -22,6 +28,19 @@ public class Autorias implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer matriculaPesquisador;
+	
+	//Relacionamentos
+	@ManyToOne
+	@JoinColumn(name = "pesquisa_id")
+	private Pesquisa pesquisa;
+	
+	
+	@ManyToOne
+	private Pesquisador pesquisador;
+	
+	@OneToMany(mappedBy = "pesquisa")
+	@JsonIgnore
+	private List <Autorias> autorias;
 
 	// Construtores
 	public Autorias() {

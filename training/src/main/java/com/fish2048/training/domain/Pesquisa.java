@@ -29,11 +29,13 @@ public class Pesquisa implements Serializable {
 	private Date dataInicio;
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataFim;
-	
+
 	// Relacionamentos
 	@OneToMany(mappedBy = "pesquisa")
 	@JsonIgnore
 	private List<Povoamento> povamentos;
+
+	private List<Autorias> autorias;
 
 	// Construtores
 	public Pesquisa() {

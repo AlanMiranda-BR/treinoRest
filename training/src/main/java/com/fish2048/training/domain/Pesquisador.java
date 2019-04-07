@@ -1,11 +1,15 @@
 package com.fish2048.training.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Wellinton Camboim
@@ -25,6 +29,11 @@ public class Pesquisador implements Serializable {
 	private Integer telefone;
 	private String emailPesquisador;
 	private String centroTrabalho;
+	
+	//Relacionamentos
+	@OneToMany(mappedBy = "pesquisador")
+	@JsonIgnore
+	private List <Autorias> autorias;
 
 	// Construtores
 	public Pesquisador() {
