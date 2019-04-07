@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -28,6 +29,10 @@ public class Publicacao implements Serializable {
 	private String localPublicacao;
 	private String agenciaPublicacao;
 	private String fatorImpactoPublicacao;
+	
+	// Relacionamentos
+	@ManyToOne
+	private Pesquisa pesquisa;
 
 	// Construtores
 	public Publicacao() {
@@ -91,6 +96,14 @@ public class Publicacao implements Serializable {
 
 	public void setFatorImpactoPublicacao(String fatorImpactoPublicacao) {
 		this.fatorImpactoPublicacao = fatorImpactoPublicacao;
+	}
+
+	public Pesquisa getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(Pesquisa pesquisa) {
+		this.pesquisa = pesquisa;
 	}
 
 	// HashCode e equals

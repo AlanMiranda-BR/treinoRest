@@ -123,11 +123,29 @@ public class TrainingApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//Usar o padrão sdf.parse("20/03/1932 14:23")  para preencher campos de data/hora
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-			
+		
+		//PESQUISADORES
+		Pesquisador pesd1 = new Pesquisador(null, "João", 156464, "plantar mandioca", 9594661, "joao@email.com", "roça");
+		Pesquisador pesd2 = new Pesquisador(null, "Maria", 156464, "algas marinhas", 6564671, "maria@email.com", "mar");
+		Pesquisador pesd3 = new Pesquisador(null, "Jenifer", 156464, "virar o zoinho", 9594661, "jenifer@email.com", "terreiro");
+		pesquisadorRepository.saveAll(Arrays.asList(pesd1, pesd2, pesd3));
+		
+		//PESQUISAS
+		Pesquisa pesq1 = new Pesquisa(null, sdf.parse("01/04/2018 13:40"), sdf.parse("04/04/2018 13:40"));
+		Pesquisa pesq2 = new Pesquisa(null, sdf.parse("02/04/2018 13:40"), sdf.parse("05/04/2018 13:40"));
+		Pesquisa pesq3 = new Pesquisa(null, sdf.parse("03/04/2018 13:40"), sdf.parse("06/04/2018 13:40"));
+		pesquisaRepository.saveAll(Arrays.asList(pesq1, pesq2, pesq3));
+		
 		//AUTORIAS
 		Autorias aut1 = new Autorias(null, 6549846);
 		Autorias aut2 = new Autorias(null, 7651665);
 		Autorias aut3 = new Autorias(null, 8641134);
+		aut1.setPesquisa(pesq1);
+		aut2.setPesquisa(pesq2);
+		aut3.setPesquisa(pesq3);
+		aut1.setPesquisador(pesd1);
+		aut2.setPesquisador(pesd2);
+		aut3.setPesquisador(pesd3);
 		autoriasRepository.saveAll(Arrays.asList(aut1, aut2, aut3));
 		
 		//BIOMETRIAS
@@ -153,18 +171,6 @@ public class TrainingApplication implements CommandLineRunner {
 		lot1.setEspeciePeixe(esp1);
 		lot2.setEspeciePeixe(esp2);
 		lot3.setEspeciePeixe(esp3);
-						
-		//PESQUISAS
-		Pesquisa pesq1 = new Pesquisa(null, sdf.parse("01/04/2018 13:40"), sdf.parse("04/04/2018 13:40"));
-		Pesquisa pesq2 = new Pesquisa(null, sdf.parse("02/04/2018 13:40"), sdf.parse("05/04/2018 13:40"));
-		Pesquisa pesq3 = new Pesquisa(null, sdf.parse("03/04/2018 13:40"), sdf.parse("06/04/2018 13:40"));
-		pesquisaRepository.saveAll(Arrays.asList(pesq1, pesq2, pesq3));
-		
-		//PESQUISADORES
-		Pesquisador pesd1 = new Pesquisador(null, "João", 156464, "plantar mandioca", 9594661, "joao@email.com", "roça");
-		Pesquisador pesd2 = new Pesquisador(null, "Maria", 156464, "algas marinhas", 6564671, "maria@email.com", "mar");
-		Pesquisador pesd3 = new Pesquisador(null, "Jenifer", 156464, "virar o zoinho", 9594661, "jenifer@email.com", "terreiro");
-		pesquisadorRepository.saveAll(Arrays.asList(pesd1, pesd2, pesd3));
 		
 		//PHs
 		Ph ph1 = new Ph(null, "Ácido");
@@ -326,6 +332,9 @@ public class TrainingApplication implements CommandLineRunner {
 		Publicacao publ1 = new Publicacao(null, "Artigo", sdf.parse("12/04/2018 14:40"), "Camboriu", "IFC", "nada");
 		Publicacao publ2 = new Publicacao(null, "Documento", sdf.parse("22/04/2018 14:40"), "Bal. Camboriú", "Tia Maria", "Social");
 		Publicacao publ3 = new Publicacao(null, "Tese", sdf.parse("02/04/2018 14:40"), "Itajai", "IFSC", "nada");
+		publ1.setPesquisa(pesq1);
+		publ2.setPesquisa(pesq2);
+		publ3.setPesquisa(pesq3);
 		publicacaoRepository.saveAll(Arrays.asList(publ1, publ2, publ3));
 		
 			

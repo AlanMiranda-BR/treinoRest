@@ -35,7 +35,13 @@ public class Pesquisa implements Serializable {
 	@JsonIgnore
 	private List<Povoamento> povamentos;
 
+	@OneToMany(mappedBy = "pesquisa")
+	@JsonIgnore
 	private List<Autorias> autorias;
+	
+	@OneToMany(mappedBy = "pesquisa")
+	@JsonIgnore
+	private List<Publicacao> publicacoes;
 
 	// Construtores
 	public Pesquisa() {
@@ -79,6 +85,22 @@ public class Pesquisa implements Serializable {
 
 	public void setPovamentos(List<Povoamento> povamentos) {
 		this.povamentos = povamentos;
+	}
+
+	public List<Autorias> getAutorias() {
+		return autorias;
+	}
+
+	public void setAutorias(List<Autorias> autorias) {
+		this.autorias = autorias;
+	}
+
+	public List<Publicacao> getPublicacoes() {
+		return publicacoes;
+	}
+
+	public void setPublicacoes(List<Publicacao> publicacoes) {
+		this.publicacoes = publicacoes;
 	}
 
 	// HashCode e equals

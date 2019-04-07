@@ -29,11 +29,11 @@ public class Pesquisador implements Serializable {
 	private Integer telefone;
 	private String emailPesquisador;
 	private String centroTrabalho;
-	
-	//Relacionamentos
+
+	// Relacionamentos
 	@OneToMany(mappedBy = "pesquisador")
 	@JsonIgnore
-	private List <Autorias> autorias;
+	private List<Autorias> autorias;
 
 	// Construtores
 	public Pesquisador() {
@@ -106,6 +106,14 @@ public class Pesquisador implements Serializable {
 
 	public void setCentroTrabalho(String centroTrabalho) {
 		this.centroTrabalho = centroTrabalho;
+	}
+
+	public List<Autorias> getAutorias() {
+		return autorias;
+	}
+
+	public void setAutorias(List<Autorias> autorias) {
+		this.autorias = autorias;
 	}
 
 	// HashCode e equals
