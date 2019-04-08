@@ -1,6 +1,8 @@
 # Treinamento Rest e Spring Boot
 
-Repositório criado para treinamento da equipe de desenvolvimento do projeto Fish2048.
+Adicionei essa linha e modifiquei a de baixo.
+
+Repositório criado para treinamento da equipe de desenvolvimento do projeto Fish2048 pelos alunos de Sistemas de Informação do IFC campus Camboriú .
 
 -- O objetivo é aprender e aprimorar conhecimento sobre:
   - Arquitetura Rest
